@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+  font-family: 'SDSamliphopangche_Outline';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'SDSamliphopangche_Outline';
+  color: black;
+  background-color: #e5e4e4;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  float: right;
+  margin-right: 30px;
+}
+
+
+
+.nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  transform: translateY(-50%);
+  left: 10px;
+  font-size: 30px;
+  color: black;
+}
+
+.side-menu {
+  position: fixed;
+  left: -250px;
+  margin-top: 45px;
+  width: 200px;
+  height: 100%;
+  background: whitesmoke;
+  transition: left 0.3s;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  padding: 10px 0;
+}
+
+.side-menu ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.login-container {
+  background-color: #fff;
+  margin-top: 120px;
+  padding: 40px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.login-container h1 {
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-weight: 700;
+  color: #333;
+}
+
+.login-container p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  width: 70%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  width: 30%;
+  padding: 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.login-container .sns-login {
+  margin: 20px 0;
+  padding: 20px;
+  font-size: 14px;
+  color: #888;
+  border-radius: 10px;
+  border: 1px solid #e5e4e4;
+}
+
+.login-container .sns-login .sns-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sns-icons{
+  margin: auto;
+}
+
+.login-container .sns-login .sns-icons a {
+  width: 20%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.login-container .sns-login .sns-icons a.kakao {
+  background-color: #FEE500;
+  color: #3c1e1e;
+}
+
+.login-container .sns-login .sns-icons a.google {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #000;
+}
+
+.login-container .sns-login .sns-icons a.facebook {
+  background-color: #4267B2;
+}
+
+.login-container .sns-login .sns-icons a.apple {
+  background-color: #000;
+}
+
+.login-container .bottom-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-container .bottom-link:hover {
+  text-decoration: underline;
+}
+
+.login-container .auto-login {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-container .auto-login input {
+  margin-right: 10px;
+}

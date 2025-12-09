@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이력서</title>
+<style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        @font-face {
+        font-family: 'SDSamliphopangche_Outline';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    } 
+    
+            body {
+                font-family: 'SDSamliphopangche_Outline';
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+                
+            }
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 15px;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 30px 0px;
+                z-index: 1000;  
+            }
+
+            .header .logo {
+                float: left;
+                font-size: 24px;
+                font-weight: bold;
+                color: black;
+            }
+
+            .nav {
+                float: right;
+                margin-right: 30px;   
+            }
+
+            .header .nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .header .nav ul li {
+                display: inline-block;
+                margin-left: 20px;
+                font-size: 20px;
+            }
+            .nav ul li a {
+                color: black;
+                text-decoration: none;
+            }
+
+            .header .nav ul li:first-child {
+                margin-left: 0;
+            }
+        
+            
+
+    .logo {
+        margin-left: 50px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        position: absolute;
+        top: 30px;
+        transform: translateY(-50%);
+        left: 10px;
+        font-size: 30px;
+        color: orange;
+    }  
+      .side-menu {
+                position: fixed;
+                left: -250px; /* 메뉴바 숨기기 */
+                margin-top: 45px;
+                width: 200px;
+                height: 100%;
+                background: whitesmoke;
+                transition: left 0.3s;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .side-menu.open {
+                left: 0;
+            }
+
+            .side-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .side-menu ul li {
+                padding: 10px 0;
+            
+            }
+
+            .side-menu ul li a {
+                color: black;
+                text-decoration: none;
+}
+.container {
+        display: flex;
+        width: 100%;
+        height: auto;
+    }
+    .headers {
+        flex: 1;
+        margin-top: 100px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .headers video {
+        width: 90%;
+        height: 100%;
+        margin-left: 35px;
+    }
+    .photo-gallery {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* 사진 간의 간격을 좁게 조정 */
+        margin-top: 100px;
+        margin-right: 30px;
+        height: 350px;
+    }
+    .photo-gallery .photo {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s;
+        height: calc(100% / 3); /* 높이를 3등분하여 맞춤 */
+    }
+    .photo-gallery .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    }
+    .photo-gallery .photo:nth-child(2) img {
+        clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    }
+    .photo-gallery .photo:nth-child(3) img {
+        clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    }
+    .photo-gallery .photo .description {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .photo-gallery .photo:hover {
+        transform: scale(1.1);
+    }
+    .photo-gallery .photo:hover .description {
+        opacity: 1;
+    }
+    .central-photo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        display: none;
+        width: 600px;
+        height: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .central-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+.personal-info { text-align: right;  }
+  .tabs { list-style: none; 
+         display: flex; 
+         padding: 10px 0;
+         background: #eee;
+          }
+
+  .tabs li { padding: 10px 20px; 
+             cursor: pointer; 
+             font-weight: bold; 
+            }
+  .tabs li:not(:last-child) { border-right: 1px solid #ccc;}
+  .resumes-container {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 100%;
+    height: auto;
+    background: #eee;
+    margin-top: -20px;
+  }
+  .resumes {
+        width: 1200px;
+        background-color:  #f4f4f4; 
+        padding: 5px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #000;
+    }
+    .left-column {
+        width: 25%;
+        text-align: center;
+        padding: 20px;
+        background-color: #e0e0e0;
+        border-radius: 10px 0 0 10px;
+    }
+    .left-column img {
+        border-radius: 25%;
+        width: 150px;
+        height: 150px;
+    }
+    .contact-info, .skills, .profile-pic {
+        margin-top: 20px;
+    }
+    .contact-info p {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #333;
+    }
+    .contact-info p i {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .skills {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .skills h3 {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+    .skill-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .skill {
+        text-align: center;
+    }
+    .skill img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .skill .bar {
+        width: 100%;
+        height: 10px;
+        background-color: #d0d0d0;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .skill .bar .level {
+        height: 100%;
+        background-color: #4caf50;
+    }
+    .right-column {
+        width: 70%;
+        padding: 20px;
+        border-radius: 0 10px 10px 0;
+    }
+    .section {
+        margin-bottom: 15px;
+    }
+    .section h2 {
+        border-bottom: 1px solid #4caf50;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #333;
+    }
+    .job, .activity {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .section p {
+        margin: 5px 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+    }
+    table th, table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    table th {
+        background-color: #e0e0e0;
+        color: #333;
+    }
+    table td {
+        background-color: #ffffff;
+        color: #333;
+    }
+    .job {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .job i {
+        font-size: 30px;
+        margin-right: 10px;
+        color: #4caf50;
+    }
+    .job-details {
+        flex-grow: 1;
+    }
+    .job-details h3, .job-details h4 {
+        margin: 0;
+        color: #333;
+    }
+    .job-details p {
+        margin: 5px 0;
+        color: #666;
+    }
+    .certifications ul {
+        list-style-type: circle;
+        padding-left: 20px;
+    }
+    .certifications li {
+        margin: 5px 0;
+        color: #333;
+    }
+    .activity-card {
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .activity-card h4, .activity-card p {
+        margin: 5px 0;
+        color: #333;
+    }
+    .activity-card h4, .activity-card p {
+        margin: 5px 0;
+        color: #333;
+    }
+  .resume-templates-container {
+    text-align: center; /* Center the buttons */
+    margin-top: 20px; /* Space from the top content */
+  }
+
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns */
+    grid-gap: 20px; /* Space between templates */
+    padding: 20px;
+  }
+
+  .resume-template{
+    position: relative;
+    background-color: #f4f4f4; 
+    border-radius: 5px; 
+    padding: 20px; 
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc; 
+  }
+  .resume-template img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 5px;
+    position: absolute; 
+    top: 0;
+    left: 0
+
+  }
+
+  .resume-template.selected {
+  border: 3px solid orange; /* 선택된 템플릿 테두리 색상 변경 */
+  /* 추가로 원하는 스타일을 적용할 수 있습니다. */
+}
+
+  .template-actions {
+    margin-top: 20px; 
+  }
+
+  .btn {
+    padding: 10px 20px;
+    margin: 0 10px; 
+    border-radius: 5px; 
+    border: none; 
+    font-weight: bold;
+    cursor: pointer; 
+  }
+
+  .create {
+    background-color: orange; 
+    color: white; 
+  }
+
+  .save {
+    background-color: green; 
+    color: white;
+  }
+
+  /* 자기소개서 탭 스타일 */
+.cover-letter-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.input-area {
+  width: 45%;
+}
+
+.input-area textarea {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+.input-area .keywords {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.input-area .keywords input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.output-area {
+  width: 50%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.output-area .generated-content {
+  white-space: pre-wrap; /* 줄바꿈과 공백 유지 */
+}
+
+.upload-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload {
+  margin-bottom: 20px;
+}
+.btn.upload {
+  background-color: orange; /* 배경색 설정 */
+  color: white; /* 글자색 설정 */
+}
+
+.btn:hover {
+  opacity: 0.9; /* 호버 효과 */
+}
+.uploaded-files ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.uploaded-files li {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+/* 업로드 섹션 스타일 */
+.upload-section {
+  padding: 20px;
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+/* 포트폴리오 아이템 리스트 스타일 */
+.portfolio-items {
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+}     
+.portfolio-template {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden; /* 이미지가 박스를 벗어나지 않도록 설정 */
+  margin-bottom: 20px; /* 항목 간 여백 추가 */
+  transition: transform 0.3s ease; /* 애니메이션 효과 */
+}
+
+.portfolio-template:hover {
+  transform: scale(1.05); /* 마우스 오버 시 확대 */
+}
+
+.portfolio-template img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* 이미지 모서리 둥글게 */
+}
+
+.btn.download {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%); /* 버튼을 이미지 중앙 하단에 위치 */
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4CAF50; /* 녹색 배경 */
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.download:hover {
+  background-color: #45a049; /* 버튼 호버 색상 변경 */
+}
+</style>
+</head>
+<body>
+    <div class="header" id="header">
+        <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+        <div class="logo">career hub</div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">마이 로드</a></li>
+                <li><a href="#">로드 평가</a></li>
+                <li><a href="#">면접 후기</a></li>
+                <li><a href="#">로드 공유</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="#">마이 페이지</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      // 메뉴 토글 스크립트
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          document.querySelector('.side-menu').classList.toggle('open');
+      });
+
+      </script>
+<div class="container">
+    <div class="headers" style="flex: 1;">
+        <video autoplay muted loop>
+       <source src="myload111.mp4" type="video/mp4"></video>
+    </div>
+    <div class="photo-gallery creative-layout" style="flex: 1;">
+        <div class="photo" data-central="main-1.png">
+            <img src="MY1.png" alt="사진 1">
+            <div class="description"></div>
+        </div>
+        <div class="photo" data-central="main-2.png">
+            <img src="MY2.png" alt="사진 2">
+            <div class="description"></div>
+        </div>
+        <div class="photo" data-central="main-3.png">
+            <img src="MY3.png" alt="사진 3">
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="central-photo">
+        <img src="" alt="중앙 사진">
+    </div>
+</div>
+<script>
+          document.querySelectorAll('.photo-gallery .photo').forEach(photo => {
+          photo.addEventListener('mouseover', function() {
+              const centralPhoto = document.querySelector('.central-photo img');
+              centralPhoto.src = this.getAttribute('data-central');
+              document.querySelector('.central-photo').style.display = 'block';
+          });
+          photo.addEventListener('mouseout', function() {
+              document.querySelector('.central-photo').style.display = 'none';
+          });
+      });
+</script>
+    <ul class="tabs">
+        <li class="active" onclick="openTab('resume')">이력서</li>
+        <li class="active" onclick="openTab('cover-letter')">자기소개서</li>
+        <li class="active" onclick="openTab('portfolio')">포트폴리오</li>
+    </ul>
+    <div class="tab-content" id="resume">
+        <div class="resumes-container">
+        <div class="resumes">
+            <div class="left-column">
+                <div class="profile-pic">
+                    <img src="a.jpg" alt="Profile Picture">
+                </div>
+                <div class="contact-info">
+                    <p><i class="fa fa-birthday-cake"></i>2000.03.01</p>
+                    <p><i class="fa fa-envelope"></i>email@email.com</p>
+                    <p><i class="fa fa-phone"></i>010.0000.0000</p>
+                    <p><i class="fa fa-map-marker-alt"></i>서울특별시 구로구 구로동</p>
+                    <p><i class="fa fa-globe"></i>www.example.com</p>
+                </div>
+                <div class="skills">
+                    <h3>작업 스킬</h3>
+                    <div class="skill-grid">
+                        <div class="skill">
+                            <img src="js1.png" alt="Skill 1">
+                            <div class="bar">
+                                <div class="level" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="java1.png" alt="Skill 2">
+                            <div class="bar">
+                                <div class="level" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="node1.png" alt="Skill 3">
+                            <div class="bar">
+                                <div class="level" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="sql1.png" alt="Skill 4">
+                            <div class="bar">
+                                <div class="level" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="li1.png" alt="Skill 4">
+                            <div class="bar">
+                                <div class="level" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="php1.png" alt="Skill 4">
+                            <div class="bar">
+                                <div class="level" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <img src="py1.png" alt="Skill 4">
+                            <div class="bar">
+                                <div class="level" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="section">
+                    <h2>나의 이력서</h2>
+                    <p style="font-size: 20px;">나효원 | 웹 개발자</p>
+                </div>
+                <div class="section">
+                    <h2>경력 사항</h2>
+                    <div class="job">
+                      <i class="fa-solid fa-calendar-days"></i>
+                        <div class="job-details">
+                            <h3>삼성전자</h3>
+                            <h4>2018-2019</h4>
+                            <p>웹 풀스택(인턴)</p>
+                        </div>
+                    </div>
+                    <div class="job">
+                      <i class="fa-solid fa-calendar-days"></i>
+                        <div class="job-details">
+                            <h3>코드팜</h3>
+                            <h4>2019-2020</h4>
+                            <p>백엔드 개발</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>학력 사항</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>재학 기간</th>
+                                <th>학교명</th>
+                                <th>전공</th>
+                                <th>졸업 구분</th>
+                                <th>학점</th>
+                                <th>지역</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2016 - 2020</td>
+                                <td>서울대학교</td>
+                                <td>컴퓨터 공학과</td>
+                                <td>졸업</td>
+                                <td>3.8/4.5</td>
+                                <td>서울</td>
+                            </tr>
+                            <tr>
+                                <td>2016 - 2020</td>
+                                <td>서울대학교</td>
+                                <td>컴퓨터 공학과</td>
+                                <td>졸업</td>
+                                <td>3.8/4.5</td>
+                                <td>서울</td>
+                            </tr>
+                            <tr>
+                                <td>2016 - 2020</td>
+                                <td>서울대학교</td>
+                                <td>컴퓨터 공학과</td>
+                                <td>졸업</td>
+                                <td>3.8/4.5</td>
+                                <td>서울</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section certifications">
+                    <h2>자격증</h2>
+                    <ul>
+                        <li>정보처리기사</li>
+                        <li>네트워크 관리자 2급</li>
+                        <li>리눅스 마스터 2급</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2>대외 활동</h2>
+                    <div class="activity-card">
+                        <h4>2019년 한국 대학생 프로그래밍 경진대회</h4>
+                        <p>은상</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>2020년 서울대학교 코딩 대회</h4>
+                        <p>대상</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="resume-templates-container">
+          <div class="template-grid">
+            <div class="resume-template" id="template-1" onclick="selectTemplate(1)"><img src="1a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-2" onclick="selectTemplate(2)"><img src="2a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-3" onclick="selectTemplate(3)"><img src="3a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-4" onclick="selectTemplate(4)"><img src="4a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-5" onclick="selectTemplate(5)"><img src="5a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-6" onclick="selectTemplate(6)"><img src="6a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-7" onclick="selectTemplate(7)"><img src="7a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-8" onclick="selectTemplate(8)"><img src="8a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-9" onclick="selectTemplate(9)"><img src="9a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-10" onclick="selectTemplate(10)"><img src="10a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-11" onclick="selectTemplate(11)"><img src="11a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-12" onclick="selectTemplate(12)"><img src="12a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-13" onclick="selectTemplate(13)"><img src="13a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-14" onclick="selectTemplate(14)"><img src="14a.png" alt="템플릿1"></div>
+            <div class="resume-template" id="template-15" onclick="selectTemplate(15)"><img src="15a.png" alt="템플릿1"></div>
+          </div>
+          <div class="template-actions">
+            <button class="btn create" onclick="createResume()">생성</button>
+            <button class="btn save">저장</button>
+          </div>
+        </div>  
+      </div>
+      <script>
+    let selectedTemplateId = null;
+  
+  function selectTemplate(templateId) {
+    if (selectedTemplateId) {
+      // 이전에 선택된 템플릿의 스타일을 초기화
+      document.getElementById('template-' + selectedTemplateId).classList.remove('selected');
+    }
+    // 새로운 템플릿 선택
+    selectedTemplateId = templateId;
+    document.getElementById('template-' + templateId).classList.add('selected');
+  }
+  
+  function createResume() {
+    if (selectedTemplateId) {
+      // 선택된 템플릿으로 이력서 생성 로직 구현
+      console.log('이력서가 템플릿 ' + selectedTemplateId + '를 사용하여 생성됩니다.');
+    } else {
+      alert('이력서 템플릿을 선택해주세요.');
+    }
+  }
+      </script>
+      <div class="tab-content" id="cover-letter">
+        <div class="cover-letter-container">
+          <div class="input-area">
+            <textarea id="coverLetterInput" placeholder="자기소개서 내용을 입력하세요..."></textarea>
+            <div class="keywords">
+              <input type="text" id="keywordInput" placeholder="키워드 추가 (예: 리더십, 협업)">
+              <button onclick="addKeyword()">적용</button>
+            </div>
+            <button class="btn create" onclick="generateCoverLetter()">자기소개서 생성</button>
+          </div>
+          <div class="output-area">
+            <h2>생성된 자기소개서</h2>
+            <div id="generatedCoverLetter" class="generated-content"></div>
+          </div>
+        </div>
+        <div class="upload-section">
+          <div class="file-upload">
+            <input type="file" id="fileInput" multiple>
+            <button class="btn upload" onclick="uploadFiles()">업로드</button>
+          </div>
+          <div class="uploaded-files">
+            <h3>업로드된 파일:</h3>
+            <ul id="fileList"></ul>
+          </div>
+        </div>
+      </div>
+      <script>
+  function addKeyword() {
+    const keywordInput = document.getElementById('keywordInput');
+    if (keywordInput.value.trim() !== '') {
+      keywords.push(keywordInput.value.trim());
+      keywordInput.value = '';
+      console.log('키워드 추가됨:', keywords);
+    }
+  }
+  
+  function generateCoverLetter() {
+    const inputText = document.getElementById('coverLetterInput').value;
+    const generatedText = `여기는 자동 생성된 자기소개서 내용이 들어갈 예정입니다.\n\n입력된 내용: ${inputText}\n\n키워드: ${keywords.join(', ')}`;
+    document.getElementById('generatedCoverLetter').textContent = generatedText;
+  }
+  
+  function uploadFiles() {
+    const fileInput = document.getElementById('fileInput');
+    const fileListElement = document.getElementById('fileList');
+  
+    if (fileInput.files.length > 0) {
+      Array.from(fileInput.files).forEach((file, index) => {
+        const fileItem = document.createElement('li');
+        fileItem.textContent = file.name + ' (' + formatFileSize(file.size) + ')';
+        fileListElement.appendChild(fileItem);
+      });
+      // 파일 입력 필드 초기화
+      fileInput.value = '';
+    } else {
+      alert('파일을 선택해주세요.');
+    }
+  }
+  
+  function formatFileSize(size) {
+    if (size < 1024) return size + ' bytes';
+    else if (size < 1024 * 1024) return (size / 1024).toFixed(1) + ' KB';
+    else return (size / 1024 / 1024).toFixed(1) + ' MB';
+  }
+  
+  
+      </script>
+  <div class="tab-content" id="portfolio">
+    <div class="upload-section">
+      <div class="file-upload">
+        <input type="file" id="fileInput" multiple>
+        <button class="btn upload" onclick="uploadPortfolio()">업로드</button>
+      </div>
+      <div class="uploaded-files">
+        <h3>업로드된 파일:</h3>
+        <ul id="fileList"></ul>
+      </div>
+    </div>
+    <div class="portfolio-download-section">
+      <h2>포트폴리오 템플릿 다운로드</h2>
+      <div class="template-grid">
+          <div class="portfolio-template" id="template-1">
+              <img src="tem1.png" alt="포트폴리오 템플릿 1">
+              <button class="btn download" onclick="downloadTemplate('template1.zip')">다운로드</button>
+          </div>
+          <div class="portfolio-template" id="template-2">
+              <img src="tem2.png" alt="포트폴리오 템플릿 2">
+              <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+          </div>
+          <div class="portfolio-template" id="template-2">
+            <img src="tem3.png" alt="포트폴리오 템플릿 2">
+            <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+        </div>
+        <div class="portfolio-template" id="template-2">
+          <img src="tem4.png" alt="포트폴리오 템플릿 2">
+          <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+      </div>
+      <div class="portfolio-template" id="template-2">
+        <img src="tem5.png" alt="포트폴리오 템플릿 2">
+        <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+    </div>
+    <div class="portfolio-template" id="template-2">
+      <img src="tem6.png" alt="포트폴리오 템플릿 2">
+      <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem7.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem8.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem9.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem10.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem11.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem12.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem13.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+  <div class="portfolio-template" id="template-2">
+    <img src="tem14.png" alt="포트폴리오 템플릿 2">
+    <button class="btn download" onclick="downloadTemplate('template2.zip')">다운로드</button>
+  </div>
+      </div>
+  </div>
+  
+  </div>
+  
+  <script>
+    function uploadPortfolio() {
+    const input = document.getElementById('portfolio-upload');
+    const files = input.files;
+    const portfolioItems = document.querySelector('.portfolio-items');
+    
+    Array.from(files).forEach(file => {
+      const listItem = document.createElement('div');
+      listItem.textContent = file.name; // 파일 이름 표시
+      portfolioItems.appendChild(listItem); // 목록에 아이템 추가
+    });
+  }
+  function downloadTemplate(fileName) {
+    window.location.href = '/path/to/templates/' + fileName; // 서버에 파일이 위치한 경로로 설정
+  }
+  </script>
+  <script>
+        function openTab(tabId) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none"; 
+        }
+        document.getElementById(tabId).style.display = "block"; 
+      }
+      // Default open first tab
+      openTab('resume');let keywords = [];
+  </script>
+        
+</body>
+</html>

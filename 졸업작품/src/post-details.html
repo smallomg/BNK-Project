@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>포스트 상세 정보</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    @font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+    
+        body {
+            font-family: 'SDSamliphopangche_Outline';
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px 0px;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .nav {
+            float: right;
+            margin-right: 30px;
+            
+        }
+
+        .header .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header .nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .nav ul li a {
+            color: black;
+            text-decoration: none;
+        
+        }
+
+        .header .nav ul li:first-child {
+            margin-left: 0;
+        }
+.logo {
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}  
+  .side-menu {
+            position: fixed;
+            left: -250px; /* 메뉴바 숨기기 */
+            margin-top: 45px;
+            width: 200px;
+            height: 100%;
+            background: whitesmoke;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-menu ul li {
+            padding: 10px 0;
+        
+        }
+
+        .side-menu ul li a {
+            color: black;
+            text-decoration: none;
+}
+.post-detail {
+          margin-top: 100px;
+           color: black;
+            max-width: 800px;
+            margin: 120px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post-detail h1, .post-detail h2 {
+            margin: 0 0 20px 0;
+        }
+        .post-detail h1 {
+            font-size: 28px;
+        }
+        .post-detail h2 {
+            font-size: 20px;
+            color: #555;
+        }
+        .post-detail p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: auto;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 80px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .sidebar {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-picture {
+    background-color: #c4e2ff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    margin: 0;
+    color: #333;
+    margin-top: 10px;
+}
+
+.sidebar-divider {
+    border: none;
+    height: 2px;
+    background-color: #ddd;
+    margin: 10px 0 20px;
+}
+.file-section a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.file-section a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.file-icon {
+    width: 24px;
+    margin-right: 10px;
+}
+.sidebar-banner {
+    width: 100%; /* 사이드바 폭에 맞추어 조정 */
+    height: 120px; /* 이미지 비율 유지 */
+    margin-top: 20px; /* 상단 여백 */
+    border-radius: 10px; /* 경계선 둥글게 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* 그림자 효과 */
+}
+
+
+.content {
+    width: 70%; /* 혹은 원하는 비율 */
+    height: 500px; /* 적절한 높이 설정 */
+    padding: 20px;
+    overflow: hidden; /* 스크롤바 제거를 위해 */
+}
+
+
+        .profile-picture {
+            background-color: #c4e2ff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+            
+        }
+        .profile-info {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .content h2 {
+            font-size: 28px;
+            margin: 0 0 20px 0;
+            color: black;
+        }
+        .content p {
+            color: black;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+        <div class="logo">커리어 허브</div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">마이 로드</a></li>
+                <li><a href="#">로드 평가</a></li>
+                <li><a href="#">면접 후기</a></li>
+                <li><a href="#">로드 공유</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="#">마이 페이지</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      // 메뉴 토글 스크립트
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          document.querySelector('.side-menu').classList.toggle('open');
+      });
+      </script>
+       <div class="container">
+        <div class="sidebar">
+            <div class="profile-picture" id="post-title"></div>
+            <div class="profile-info">
+                <p id="post-author"></p>
+                <p>신입사원</p>
+                <p>대학(2,3년)</p>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="file-section">
+                <a href="my1.pdf" class="file-link">
+                    <i class="fas fa-file-alt file-icon"></i>
+                    이력서 파일
+                </a>
+                <a href="my2.pdf" class="file-link">
+                    <i class="fas fa-file-signature file-icon"></i>
+                    자기소개서 파일
+                </a>
+                <a href="my3.pdf" class="file-link">
+                    <i class="fas fa-briefcase file-icon"></i>
+                    포트폴리오 파일
+                </a>
+            </div>
+            <div class="banner-section">
+                <img src="123321.png" alt="배너 1" class="sidebar-banner">
+                <img src="234432.png" alt="배너 2" class="sidebar-banner">
+            </div>
+        </div>
+        <div class="content">
+          <div class="content-text">
+            <h2>로드 공유</h2>
+            <p>좌측에 확인하고 싶은 파일을 눌러 상대방에 로드를 확인하세요</p>
+        </div>
+            <iframe id="content-frame" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+    </div>
+    <script>
+        //파일 프레임 띄우기    
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.file-link');
+            const contentFrame = document.getElementById('content-frame');
+        
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // 클릭 이벤트의 기본 동작(링크 이동) 방지
+                    contentFrame.src = this.href; // iframe의 src 속성을 링크의 href 속성으로 설정
+                });
+            });
+        });
+        </script>
+
+
+ <script>
+     // 임시로 하드코딩된 데이터
+     const posts = [
+          { id: 1, title: '기획.전략', author: '홍길동', content: '여기에 포스트 내용을 작성하세요.' },
+          { id: 2, title: '법무.사무.총무', author: '김영희', content: '여기에 포스트 내용을 작성하세요.' }
+        ];
+
+        // 쿼리 매개변수 추출
+        const params = new URLSearchParams(window.location.search);
+        const postId = parseInt(params.get('id'));
+
+        // 해당 ID의 포스트 찾기
+        const post = posts.find(p => p.id === postId);
+
+        // 페이지에 데이터 설정
+        if (post) {
+          document.getElementById('post-title').textContent = post.title;
+          document.getElementById('post-author').textContent += post.author;
+          document.getElementById('post-content').textContent = post.content;
+        } 
+ </script>
+</body>
+</html>

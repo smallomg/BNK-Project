@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #fafafa;
+    font-family: 'SDSamliphopangche_Outline';
+    color: white;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px 0px;
+    z-index: 1000;
+}
+
+.header .logo {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-left: 50px;
+}
+
+.nav {
+    float: right;
+    margin-right: 30px;
+}
+
+.header .nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header .nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}
+
+.side-menu {
+    position: fixed;
+    left: -250px;
+    margin-top: 45px;
+    width: 200px;
+    height: 100%;
+    background: whitesmoke;
+    transition: left 0.3s;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    padding: 10px 0;
+}
+
+.side-menu ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.rstags {
+    background-color: #ffffff;
+    width: 65%;
+    text-align: center;
+    margin: 50px auto;
+    padding: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.rstags h4 {
+    color: #ff8c00;
+    font-size: 20px;
+}
+
+.rstags h1 {
+    text-align: center;
+    margin-top: 0;
+    color: black;
+}
+
+.rstags p {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #ff7b00;
+}
+
+.buttons button.active {
+    background-color: #ff7b00;
+}
+
+.post-non {
+    background-color: #F2F2F2;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.filtersRs {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.filtersRs-select {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-family: 'SDSamliphopangche_Outline', sans-serif;
+    font-size: 12px;
+    height: 30px;
+    width: auto;
+    min-width: 100px;
+}
+
+.postRs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.postRs {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.postRs:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.postRs-title {
+    font-size: 24px;
+    color: #333;
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+.postRs-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.postRs-author {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.postRs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: auto;
+}
+
+.postRs-tag {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.modal-content {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 90%;         /* 이 부분을 수정하여 전체 너비 조절 */
+    max-width: 500px;   /* 이 부분을 수정하여 최대 너비 조절 */
+    max-height: 90vh;   /* 이 부분을 수정하여 최대 높이 조절 */
+    overflow-y: auto;
+}
+.modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.file-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.file-notice {
+    color: #666;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.submit-btn {
+    background-color: #ff8c00;
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #ff7b00;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+.create-post-btn {
+    position: relative;
+    left: 80%;
+    background-color: #ff8c00;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.create-post-btn:hover {
+    background-color: #ff7b00;
+}

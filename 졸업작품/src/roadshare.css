@@ -1,0 +1,266 @@
+/* Base styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a73e8;
+  margin-left: 20px;
+}
+
+
+/* Main container */
+.container {
+  display: flex;
+  margin-top: 60px;
+  min-height: calc(100vh - 60px);
+  padding: 24px;
+  gap: 24px;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 84px;
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  background: #e8f0fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #1a73e8;
+  margin-bottom: 16px;
+}
+
+.profile-info {
+  margin-bottom: 24px;
+}
+
+.profile-info p {
+  margin: 8px 0;
+  color: #5f6368;
+}
+
+.author-name {
+  font-weight: 500;
+  color: #202124 !important;
+}
+
+.sidebar-divider {
+  border: none;
+  height: 1px;
+  background-color: #e8eaed;
+  margin: 16px 0;
+}
+
+.file-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #5f6368;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.file-link:hover {
+  background-color: #f8f9fa;
+}
+
+.file-link.active {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.content-header {
+  padding: 24px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.content-header h2 {
+  margin: 0 0 16px 0;
+  color: #202124;
+  font-size: 24px;
+}
+
+.content-meta {
+  display: flex;
+  gap: 24px;
+}
+
+.content-meta p {
+  margin: 0;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.content-body {
+  padding: 24px;
+}
+
+.content-body h3 {
+  margin: 0 0 24px 0;
+  color: #202124;
+}
+
+/* PDF Viewer styles */
+.pdf-controls {
+  display: flex;
+  position: relative;
+  left: 20px;
+  margin-bottom: 24px;
+}
+
+.download-btn {
+  padding: 10px 24px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #1557b0;
+  box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+}
+
+.pdf-document-container {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.react-pdf__Document {
+  max-width: 100%;
+}
+
+.react-pdf__Page {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* PDF Navigation */
+.pdf-navigation-container {
+  padding: 16px 24px;
+  background-color: white;
+  border-top: 1px solid #e8eaed;
+}
+
+.pdf-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.nav-button:disabled {
+  background-color: #e8eaed;
+  color: #5f6368;
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: #1557b0;
+  box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f9fa;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.page-input {
+  width: 50px;
+  padding: 4px 8px;
+  border: 1px solid #e8eaed;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.page-input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.pdf-page-info {
+  color: #5f6368;
+  font-size: 14px;
+}
+
+/* Loading and error states */
+.loading, .error, .not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: #5f6368;
+}
+
+.error button, .not-found button {
+  padding: 10px 24px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.2s ease;
+}
+
+.error button:hover, .not-found button:hover {
+  background-color: #1557b0;
+  box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+}

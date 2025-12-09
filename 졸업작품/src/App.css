@@ -1,0 +1,948 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'SDSamliphopangche_Outline';
+    color: white;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px 0px;
+    z-index: 1000;
+}
+
+.header .logo {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    
+}
+
+.logo{
+    text-decoration: none;
+}
+.nav {
+    float: right;
+    margin-right: 30px;
+}
+
+.header .nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header .nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}
+
+.side-menu {
+    position: fixed;
+    left: -250px;
+    margin-top: 45px;
+    width: 200px;
+    height: 100%;
+    background: whitesmoke;
+    transition: left 0.3s;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li {
+    padding: 10px 0;
+}
+
+.side-menu ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.banner-container {
+    width: 230px;
+    height: 10px;
+    transition: width 0.3s;
+    margin-top: 90px;  
+    margin-left: 20px;
+}
+
+.slide-banner {
+    position: relative;
+    max-width: 100%;
+}
+
+.slides {
+    display: none;
+}
+
+.slides.active {
+    display: block;
+    opacity: 1;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.ad-banner {
+    margin-top: 20px;
+}
+
+.slides img, .ad-banner img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slide-banner:hover, .ad-banner:hover {
+    transform: scale(1.05);
+    border-color: #ccc;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.filter-container {
+    width: 95%;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 70px auto 0;
+    border: 2px solid whitesmoke;
+    border-radius: 1px;
+    margin-right: 230px;
+}
+
+.filter-section {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.517);
+    margin-bottom: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    margin-right: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.search-button {
+    display: block;
+    width: auto;
+    padding: 8px 20px;
+    margin: 10px auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.post-color {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.line {
+    position: absolute;
+    height: 2px;
+    background: rgba(0, 150, 200, 0.6);
+    animation: drawLine 4s infinite;
+}
+
+@keyframes drawLine {
+    0% { width: 0; }
+    50% { width: 38%; }
+    100% { width: 0; }
+}
+
+.post-title {
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+    line-height: 30px;
+}
+
+.dropdown {
+    width: 200px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.dropdown select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+.post {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.post h3 {
+    font-size: 18px;
+    color: black;
+    margin: 5px 0;
+}
+
+.post h4 {
+    font-size: 16px;
+    color: gray;
+    margin: 5px 0;
+}
+
+.tags {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #eef;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 60px;
+    color: #007bff;
+    transition: transform 0.5s ease-out;
+}
+
+.post:hover .arrow {
+    animation: hoverArrow 0.5s forwards;
+    color: #0056b3;
+}
+
+@keyframes hoverArrow {
+    0% {
+        transform: translateX(0) translateY(-50%);
+    }
+    50% {
+        transform: translateX(-10px) translateY(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(0) translateY(-50%) scale(1);
+    }
+}
+
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    padding: 5px 10px;
+    margin: 0 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+#pagination button:hover {
+    background-color: whitesmoke;
+}
+
+.post-button {
+    padding: 5px 10px;
+    margin: 0 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    color: black;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+    }
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.star-rating {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 20px;
+    direction: rtl; 
+}
+
+.star-rating > input[type="radio"] {
+    display: none;
+}
+
+.star-rating > label {
+    display: inline-block;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating > label:before {
+    content: "\2605";
+    position: relative;
+    display: block;
+    font-size: 24px;
+}
+
+.star-rating > label:hover:before,
+.star-rating > label:hover ~ label:before,
+.star-rating > input[type="radio"]:checked ~ label:before {
+    color: #ffd700;
+}
+
+.difficulty {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.container {
+    max-width: 75%;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title-section h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.rating-section, .info-section, .evaluation-section, .details-section, .feedback-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.rating-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.rating .section-title {
+    margin-bottom: 0;
+    margin-right: 20px;
+}
+
+.rating .star {
+    color: #ffd700;
+    margin-left: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.info-item label {
+    font-weight: bold;
+    color: #333;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.feedback {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.post-name {
+    padding: 20px;
+    text-align: center;
+    color: black;
+}
+.left-side-menu {
+    position: fixed;
+    left: 0;
+    top: 10%;
+    width: 180px;
+    height: 100%;
+    background-color: #2C3E50;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.left-side-menu h1 {
+    padding: 10px;
+    font-size: 20px;
+    margin: 0;
+    background-color: #34495E;
+    text-align: center;
+}
+
+.left-side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.left-side-menu ul li {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.left-side-menu ul li a {
+    color: white;
+    /* 링크 색상 */
+    text-decoration: none;
+    /* 밑줄 제거 */
+    display: block;
+    /* 블록 단위 */
+}
+
+.left-side-menu ul li ul li a{
+    display: block;
+    padding: 10px 0;
+    color: #BDC3C7;
+    text-decoration: none;
+}
+
+.evaluator {
+    position: fixed;
+    top: 57%;
+    background-color: #2C3E50; /* 밝은 배경색 */
+    color: #333; /* 글자 색상 변경 */
+
+}
+
+.evaluator h1 {
+    color: #007bff; /* 제목 색상 */
+    font-size: 20px;
+}
+.uploadSection {
+    position: fixed;
+    /* 고정 위치 */
+    left: 15%;
+    /* 사이드 메뉴 너비만큼 오른쪽으로 이동 */
+    top: 90px;
+    /* 헤더 아래에 위치하도록 설정 */
+    width: 80%;
+    /* 나머지 너비 차지 */
+    height: auto;
+    /* 자동 높이 조정 */
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    overflow: auto;
+    /* 내용이 많을 경우 스크롤 */
+    z-index: 500;
+    /* 사이드 메뉴보다 낮은 z-index */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* 그림자 효과 */
+}
+
+.uploadSection h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    color: black;
+}
+
+#resume-preview,
+#cover-letter-preview,
+#portfolio-preview {
+    margin-top: 10px;
+    height: 100px;
+    /* 미리보기 영역 높이 */
+    border: 1px solid #ddd;
+    /* 미리보기 영역 테두리 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* 넘치는 내용 숨김 */
+    background-color: #fff;
+    /* 배경색 */
+}
+.pdf-preview,
+.doc-preview {
+    width: 100%;
+    height: auto;
+    /* 이미지 크기 자동 조절 */
+
+}
+
+.uploadSection select,
+.uploadSection button {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.uploadSection button {
+    margin-top: 10px;
+    padding: 8px;
+    width: calc(50% - 4px);
+    /* 버튼 두 개가 같은 줄에 나타나도록 */
+    margin-right: 4px;
+    /* 오른쪽 버튼에 여백 */
+    background-color: #4CAF50;
+    /* 업로드 버튼은 녹색 */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.uploadSection button:last-child {
+    margin-right: 0;
+    /* 마지막 버튼에는 여백 없음 */
+    background-color: #f44336;
+    /* 취소 버튼은 빨간색 */
+}
+
+.uploadSection button:hover {
+    opacity: 0.8;
+    /* 호버 효과 */
+}
+
+.documentManagement, .upcomingAssessments, .evaluatedLists {
+    position: fixed;
+    /* 고정 위치 */
+    left: 15%;
+    /* 사이드 메뉴 너비만큼 오른쪽으로 이동 */
+    top: 100px;
+    /* 헤더 아래에 위치하도록 설정 */
+    width: 80%;
+    /* 나머지 너비 차지 */
+    height: auto;
+    /* 자동 높이 조정 */
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    overflow: auto;
+    /* 내용이 많을 경우 스크롤 */
+    z-index: 500;
+    /* 사이드 메뉴보다 낮은 z-index */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* 그림자 효과 */
+}
+
+.documentManagement h2, .upcomingAssessments h2, .evaluatedLists h2 {
+    margin-top: 0;
+    color: black;
+}
+
+.documentManagement table, .upcomingAssessments table, .evaluatedLists table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.documentManagement th, .upcomingAssessments th, .evaluatedLists th,
+.documentManagement td, .upcomingAssessments td, .evaluatedLists td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+
+.documentManagement button, .upcomingAssessments button, .evaluatedLists button {
+    padding: 5px 10px;
+    margin-top: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.documentManagement button:hover, .upcomingAssessments button:hover, .evaluatedLists button:hover {
+    background-color: #45a049;
+}
+
+.documentManagement td, .upcomingAssessments td, .evaluatedLists td {
+    text-align: center;
+}
+
+.evaluationSection {
+    background: #fff;
+    border-left: 4px solid #5cb85c;
+    /* 강조 표시 */
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 20%;
+    top: 100px;
+    width: 70%;
+    z-index: 100;
+    display: none;
+    /* 초기에는 숨김 처리 */
+}
+
+.evaluationSection h2 {
+    color: #5cb85c;
+    /* 헤더 색상 */
+    margin: 0 0 20px 0;
+}
+
+.evaluationSection ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.evaluationSection ul li {
+    background: #eee;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    /* 화면의 중앙에 위치 */
+    left: 50%;
+    /* 화면의 중앙에 위치 */
+    transform: translate(-50%, -50%);
+    /* 정확한 중앙 정렬을 위해 translate 사용 */
+    background-color: white;
+    color: black;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: none;
+    /* 초기에는 보이지 않도록 설정 */
+    border-radius: 10px;
+    /* 모서리를 둥글게 */
+}
+
+/* 로드 목록 섹션 스타일링 */
+.Road-list-section {
+    position: fixed;
+    /* 고정 위치 */
+    top: 20%;
+    /* 더 아래로 조정 */
+    left: 55%;
+    /* 가운데 정렬 */
+    transform: translateX(-50%);
+    /* 왼쪽으로 50% 이동하여 중앙에 위치 */
+    width: 70%;
+    /* 너비 조정 */
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 그림자 효과 추가 */
+    background-color: #ffffff;
+    /* 배경색 변경 */
+    padding: 20px;
+    /* 내부 여백 */
+    border-radius: 10px;
+    /* 모서리 둥글게 */
+    z-index: 1002;
+    /* z-index 조정으로 다른 요소 위에 표시 */
+}
+
+.Road-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.Road-filter-form label {
+    flex: 1 1 20%;
+    /* 라벨 크기 조정 */
+    margin-right: 15px;
+    /* 오른쪽 여백 */
+    white-space: nowrap;
+    /* 텍스트 줄바꿈 방지 */
+}
+
+.Road-filter-form button {
+    margin-top: 10px;
+}
+
+.Road-filter-form button:hover {
+    background-color: orange;
+    /* 호버 시 색상 변경 */
+}
+
+/* 테이블 스타일링 */
+.Road-results table {
+    width: 100%;
+    /* 전체 너비 */
+    border-collapse: collapse;
+    /* 테두리 합치기 */
+    margin-top: 20px;
+    /* 테이블 상단 여백 */
+}
+
+.Road-results th,
+#Road-results td {
+    text-align: left;
+    /* 텍스트 정렬 */
+    padding: 8px;
+    /* 패딩 */
+    border-bottom: 1px solid #ddd;
+    /* 하단 테두리 */
+}
+
+.Road-results th {
+    background-color: #f4f4f4;
+    /* 배경색 */
+    color: #333;
+    /* 글자색 */
+}
+
+.Road-results td {
+    background-color: #fff;
+    /* 배경색 */
+}
+
+/* 버튼 스타일 조정 */
+
+
+#protectionFilm {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#resume-preview,
+#cover-letter-preview,
+#portfolio-preview {
+    margin: auto;
+    width: 1114px;
+    height: 900px;
+}

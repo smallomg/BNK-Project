@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>포스트 상세 정보</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  @font-face {
+  font-family: 'SDSamliphopangche_Outline';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} 
+  
+        /* 이전에 정의된 스타일을 재사용하고 필요한 부분만 추가/조정 */
+        body {
+            font-family: 'SDSamliphopangche_Outline';
+            color: white;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px 0px;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .nav {
+            float: right;
+            margin-right: 30px;
+            
+        }
+
+        .header .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header .nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .nav ul li a {
+            color: black;
+            text-decoration: none;
+        
+        }
+
+        .header .nav ul li:first-child {
+            margin-left: 0;
+        }
+.logo {
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}  
+  .side-menu {
+            position: fixed;
+            left: -250px; /* 메뉴바 숨기기 */
+            margin-top: 45px;
+            width: 200px;
+            height: 100%;
+            background: whitesmoke;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-menu ul li {
+            padding: 10px 0;
+        
+        }
+
+        .side-menu ul li a {
+            color: black;
+            text-decoration: none;
+}
+.container {
+      width: 80%;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 50px;
+      color: black;
+  }
+  h1, h2 {
+      color: #007bff;
+  }
+  .details-section {
+      display: flex;
+      flex-wrap: wrap; /* Ensure they wrap as needed */
+      justify-content: space-between;
+    }
+  .details-block {
+      display: flex; /* Align items horizontally */
+      justify-content: space-between;
+      padding: 10px;
+      background: #eee;
+      border-radius: 5px;
+      width: 100%; /* Full width to encompass all items */
+    }
+  .interview-details {
+      background: #eee;
+      padding: 15px;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  .detail-item {
+      width: 24%; /* Equal width */
+      padding: 10px;
+      box-sizing: border-box;
+      background: #eee;
+      flex: 1; /* Distribute space evenly */
+  }
+  label, .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+  }
+  input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+  }
+  .star-rating {
+      font-size: 20px;
+      color: #fd4;
+      display: flex;
+      align-items: center;
+  }
+  .star-rating .fa {
+      color: gold;
+  }
+  .difficulty {
+      padding: 5px 10px;
+      color: white;
+      border-radius: 5px;
+  }
+  .star-rating, .difficulty {
+      display: inline-block; /* Align icons in line */
+    }
+    .sta
+  .easy { background-color: #2ecc71; }
+  .medium { background-color: #f1c40f; }
+  .hard { background-color: #e74c3c; }
+  .review-buttons button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+  }
+  .review-buttons button:hover {
+      background-color: #0056b3;
+  }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+    <div class="logo">커리어 허브</div>
+    <div class="nav">
+        <ul>
+            <li><a href="#">마이 로드</a></li>
+            <li><a href="#">로드 평가</a></li>
+            <li><a href="#">면접 후기</a></li>
+            <li><a href="#">로드 공유</a></li>
+            <li><a href="#">커뮤니티</a></li>
+            <li><a href="#">로그인</a></li>
+        </ul>
+    </div>
+    <div class="side-menu">
+        <ul>
+            <li><a href="#">마이 페이지</a></li>
+            <li><a href="#">설정</a></li>
+            <li><a href="#">로그아웃</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+  // 메뉴 토글 스크립트
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.side-menu').classList.toggle('open');
+  });
+  </script>
+<div class="container">
+  <h1>면접 후기 상세 정보 - 코리아리서치(주)</h1>
+  <div class="details-section">
+      <div class="detail-item">
+          <span class="label">직무:</span>
+          <span class="value">개발자</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">지역:</span>
+          <span class="value">서울</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">고용 형태:</span>
+          <span class="value">신입</span>
+      </div>
+      <div class="detail-item">
+          <span class="label">합격 여부:</span>
+          <span class="value">합격</span>
+      </div>
+  </div>
+  <div class="details-block">
+    <div class="detail-item">
+        <span class="label">총 평점:</span>
+        <div class="star-rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-alt"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
+    </div>
+    <div class="detail-item">
+        <span class="label">면접관 태도:</span>
+        <progress value="3.1" max="5"></progress>
+    </div>
+    <div class="detail-item">
+        <span class="label">면접 난이도:</span>
+        <span class="difficulty easy">쉬움</span>
+    </div>
+</div>
+  <div class="interview-details">
+      <label>면접관 및 지원자 수:</label>
+      <input type="text" name="interviewerCount" value="3 면접관, 10 지원자" required>
+      <label>면접 형태:</label>
+      <input type="text" name="interviewType" value="그룹 면접" required>
+      <label>면접 질문:</label>
+      <textarea name="interviewQuestion" required>어떤 프로젝트를 진행했고, 어떤 기술을 사용했나요?</textarea>
+      <label>면접관 반응:</label>
+      <textarea name="interviewerResponse" required>면접관은 프로젝트에 대해 깊이 있는 질문을 하였습니다.</textarea>
+      <label>면접 분위기:</label>
+      <textarea name="interviewAtmosphere" required>전반적으로 긴장감이 흐르는 분위기였습니다.</textarea>
+      <label>면접 후 아쉬운 점:</label>
+      <textarea name="interviewRegrets" required>보다 구체적인 예시를 들어 설명하지 못한 점이 아쉽습니다.</textarea>
+  </div>
+  <div class="review-buttons">
+      <button onclick="confirmInterview()">면접 가이드 확인</button>
+      <button onclick="reportIssue()">제보 및 항의하기</button>
+  </div>
+</div>
+<script>
+function confirmInterview() {
+    alert("면접 가이드를 확인합니다.");
+}
+function reportIssue() {
+    alert("제보 및 항의 페이지로 이동합니다.");
+}
+</script>
+</body>
+</html>

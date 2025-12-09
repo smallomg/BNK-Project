@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세 정보 페이지</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      @font-face {
+      font-family: 'SDSamliphopangche_Outline';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  } 
+      
+          body {
+              font-family: 'SDSamliphopangche_Outline';
+              color: white;
+              width: 100%;
+              height: auto;
+              margin: 0;
+              padding: 0;
+          }
+          .header {
+              position: fixed;
+              top: 0;
+              width: 100%;
+              height: 15px;
+              background-color: white;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+              padding: 30px 0px;
+              z-index: 1000;
+          }
+  
+          .header .logo {
+              float: left;
+              font-size: 24px;
+              font-weight: bold;
+              color: black;
+          }
+  
+          .nav {
+              float: right;
+              margin-right: 30px;
+              
+          }
+  
+          .header .nav ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+          }
+  
+          .header .nav ul li {
+              display: inline-block;
+              margin-left: 20px;
+              font-size: 20px;
+          }
+          .nav ul li a {
+              color: black;
+              text-decoration: none;
+          
+          }
+  
+          .header .nav ul li:first-child {
+              margin-left: 0;
+          }
+  .logo {
+      margin-left: 50px;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .menu-toggle {
+      cursor: pointer;
+      position: absolute;
+      top: 30px;
+      transform: translateY(-50%);
+      left: 10px;
+      font-size: 30px;
+      color: orange;
+  }  
+    .side-menu {
+              position: fixed;
+              left: -250px; /* 메뉴바 숨기기 */
+              margin-top: 45px;
+              width: 200px;
+              height: 100%;
+              background: whitesmoke;
+              transition: left 0.3s;
+              padding: 20px;
+              box-sizing: border-box;
+          }
+  
+          .side-menu.open {
+              left: 0;
+          }
+  
+          .side-menu ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+          }
+  
+          .side-menu ul li {
+              padding: 10px 0;
+          
+          }
+  
+          .side-menu ul li a {
+              color: black;
+              text-decoration: none;
+  }
+  .containers {
+              width: 100%;
+              background: #fff;
+              border-radius: 8px;
+              box-sizing: border-box;
+              margin-top: 80px;
+
+          }
+          .post-name{
+            padding: 20px;
+            text-align: center;
+            color: black;
+          }
+         .back a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.back a:hover {
+    background-color: #0056b3;
+}
+          
+          .sub-post{
+            padding: 20px;
+            width: 60%;
+            height: 30%;
+            padding: 30px;
+            background-color: #f0f0f0ee;
+            color: black;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 30px;
+          }
+          .container {
+        width: 100%;    
+        background-color: #fff; /* 백그라운드 색상 변경 */
+        margin-top: 30px;
+
+    }
+    .headers {
+        background-color: #f9f9f9; /* 헤더 색상 변경 */
+        padding: 20px 20px;
+        text-align: left;
+        font-size: 28px; /* 글자 크기 조정 */
+        color: black; /* 텍스트 색상 변경 */
+        border-top: 1px solid black;
+        border-bottom: 2px solid #ebebeb;
+
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+tr:first-child th {
+    border-top: none; /* 첫 번째 행의 상단 테두리 제거 */
+}
+th:first-child, td:first-child {
+    border-left: none; /* 첫 번째 열의 왼쪽 테두리 제거, 필요한 경우 추가 */
+}
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px; /* 패딩 조정 */
+        text-align: left;
+        color: black;
+        border-top: none; /* 각 셀의 상단 테두리 제거 */
+    }
+    th {
+        background-color: #f9f9f9; /* 헤더 배경색 조정 */
+        font-weight: bold; /* 글자 굵기 추가 */
+        color: black;
+    }
+    .post-content{
+        width: 90%;
+        height: 300px;
+        background-color: #fff;
+        margin: 20px auto;
+        padding: 40px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 20px; 
+        line-height: 1.6; 
+        color: #333;
+    }
+    .comments-section {
+    width: 97%;
+    padding: 20px;
+    color: black ;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#comment-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#comment-form button:hover {
+    background-color: #0056b3;
+}
+
+#comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+#comments-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.comment-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-content {
+    margin-bottom: 5px;
+}
+
+.comment-footer {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.like-button, .dislike-button {
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.like-button:hover, .dislike-button:hover {
+    background-color: #ddd;
+}
+
+.likes-count, .dislikes-count {
+    margin-right: 10px;
+}
+
+    </style>
+</head>
+ <div class="header">
+        <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+        <div class="logo">커리어 허브</div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">마이 로드</a></li>
+                <li><a href="#">로드 평가</a></li>
+                <li><a href="#">면접 후기</a></li>
+                <li><a href="#">로드 공유</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="#">마이 페이지</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      // 메뉴 토글 스크립트
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          document.querySelector('.side-menu').classList.toggle('open');
+      });
+      </script>
+     <div class="containers">
+      <div class="post-name">
+        <h1>직군 Q&A 게시판</h1>
+        <P>같은 직군 사람들에게 다양한 질의응답을 받아보세요<br>
+           면접, 이직, 퇴사 등 다양한 주제로 소통하세요</P>
+           <br>
+          <div class="back"> <a href="목록_페이지의_URL">목록으로 돌아가기</a> </div>
+      </div>
+      <div class="sub-post">
+        <P>1. 모든 게시글과 답변은 개인정보 보호법을 준수하며, 사용자의 동의 없이 개인정보를 공개하거나 사용해서는 안 됩니다.
+        </P>
+        <P>2. 게시판의 내용은 저작권법을 준수해야 하며, 타인의 저작물을 무단으로 사용할 경우 법적 책임이 따를 수 있습니다.
+        </P>
+        <P>3. 사용자 간의 소통은 차별 금지 및 평등한 대우의 원칙을 준수해야 하며, 혐오 발언이나 차별적 언어 사용을 금지해야 합니다.</P>
+        <P>4. 법적 분쟁이 발생할 가능성이 있는 내용에 대해서는 적절한 법률 자문을 구하고, 필요시 게시물을 삭제하거나 수정해야 합니다.</P>
+      </div>
+      <div class="container">
+        <div class="headers">제목:<span id="postTitle"></span></div> <!-- 제목 삽입 -->
+        <table>
+            <tr>
+                <th>등록자명</th>
+                <td><span id="postAuthor"></span></td> <!-- 예제 데이터 -->
+                <th>직무</th>
+                <td><span id="postJob"></span></td> <!-- 예제 데이터 -->
+                <th>등록일</th>
+                <td><span id="postDate"></span></td> <!-- 예제 데이터 -->
+            </tr>
+            <tr>
+                <th>조회수</th>
+                <td colspan="1"><span id="postViews"></span></td>
+                <th>추천수</th>
+                <td colspan="3"><span id="postLikes"></span></td>
+            </tr>
+        </table>
+        <div class="post-content"><span id="postContent"></span></div> <!-- 내용 추가 -->
+    </div>
+</div>
+
+  <script>
+      function getQueryParams() {
+          const params = new URLSearchParams(window.location.search);
+          document.getElementById('postTitle').textContent = params.get('title');
+          document.getElementById('postJob').textContent = params.get('job');
+          document.getElementById('postAuthor').textContent = params.get('author');
+          document.getElementById('postDate').textContent = params.get('date');
+          document.getElementById('postViews').textContent = params.get('views');
+          document.getElementById('postLikes').textContent = params.get('likes');
+          document.getElementById('postContent').textContent = params.get('content');
+      }
+      document.addEventListener('DOMContentLoaded', getQueryParams);
+  </script>
+  <div class="comments-section">
+    <h2>댓글</h2>
+    <form id="comment-form">
+        <textarea id="comment-input" placeholder="댓글을 입력하세요..." required></textarea>
+        <button type="submit">댓글 달기</button>
+    </form>
+    <ul id="comments-list">
+      <!-- 예제 댓글 -->
+      <li class="comment-item">
+          <div class="comment-user">dusg****</div>
+          <div class="comment-content">시간 관애없이 학습할 수 있어 좋습니다.</div>
+          <div class="comment-footer">
+              <span class="comment-date">2015.08.01 10:16</span>
+              <button class="like-button">좋아요</button>
+              <span class="likes-count">1</span>
+              <button class="dislike-button">싫어요</button>
+              <span class="dislikes-count">2</span>
+          </div>
+      </li>
+  </ul>
+</div>
+<script>
+  document.getElementById('comment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const commentInput = document.getElementById('comment-input');
+      const newCommentText = commentInput.value;
+      if (newCommentText.trim() !== '') {
+          const li = document.createElement('li');
+          li.className = 'comment-item';
+          li.innerHTML = `
+              <div class="comment-user">사용자****</div>
+              <div class="comment-content">${newCommentText}</div>
+              <div class="comment-footer">
+                  <span class="comment-date">${new Date().toLocaleString()}</span>
+                  <button class="like-button" data-enabled="true">좋아요</button> <span class="likes-count">0</span>
+                  <button class="dislike-button" data-enabled="true">싫어요</button> <span class="dislikes-count">0</span>
+              </div>`;
+          document.getElementById('comments-list').appendChild(li);
+          commentInput.value = '';
+  
+          const likeButton = li.querySelector('.like-button');
+          const dislikeButton = li.querySelector('.dislike-button');
+          const likesCount = li.querySelector('.likes-count');
+          const dislikesCount = li.querySelector('.dislikes-count');
+  
+          likeButton.addEventListener('click', function() {
+              if (likeButton.getAttribute('data-enabled') === "true") {
+                  likesCount.textContent = parseInt(likesCount.textContent) + 1;
+                  likeButton.setAttribute('data-enabled', "false");
+                  dislikeButton.setAttribute('data-enabled', "false");
+                  likeButton.style.backgroundColor = "#ccc"; // Optional: change color when disabled
+              }
+          });
+  
+          dislikeButton.addEventListener('click', function() {
+              if (dislikeButton.getAttribute('data-enabled') === "true") {
+                  dislikesCount.textContent = parseInt(dislikesCount.textContent) + 1;
+                  likeButton.setAttribute('data-enabled', "false");
+                  dislikeButton.setAttribute('data-enabled', "false");
+                  dislikeButton.style.backgroundColor = "#ccc"; // Optional: change color when disabled
+              }
+          });
+      }
+  });
+  </script>
+  
+</body>
+</html>

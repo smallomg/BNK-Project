@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>포스트 상세 정보</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    @font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+    
+        body {
+            font-family: 'SDSamliphopangche_Outline';
+            color: white;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px 0px;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .nav {
+            float: right;
+            margin-right: 30px;
+            
+        }
+
+        .header .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header .nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .nav ul li a {
+            color: black;
+            text-decoration: none;
+        
+        }
+
+        .header .nav ul li:first-child {
+            margin-left: 0;
+        }
+.logo {
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}  
+  .side-menu {
+            position: fixed;
+            left: -250px; /* 메뉴바 숨기기 */
+            margin-top: 45px;
+            width: 200px;
+            height: 100%;
+            background: whitesmoke;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-menu ul li {
+            padding: 10px 0;
+        
+        }
+
+        .side-menu ul li a {
+            color: black;
+            text-decoration: none;
+}
+.container {
+        width: 100%;
+        background: #ffffff;
+        margin-top: 80px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar {
+        width: 120px;
+        background: #f4f4f4;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        height: 600px;
+        overflow-y: auto;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+
+    .sidebar input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .sidebar h2 {
+        padding: 0;
+        margin: 0 0 20px 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        width: 100px;
+        padding: 5px;
+        margin-bottom: 5px;
+        color: black;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .sidebar ul li:hover {
+        background: #007bff;
+        color: white;
+    }
+
+    .main-content {
+        flex: 1;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .board-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .board-title {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .board-subtitle {
+        font-size: 16px;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: black;
+    }
+
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background: #007bff;
+        color: white;
+        transition: background 0.3s;
+    }
+
+    th:hover {
+        background: #0056b3;
+    }
+
+    .post:hover {
+        background-color: #f0f0f0;
+    }
+    .filters select {
+        padding: 8px;
+        margin-bottom: 20px;
+        width: 200px;
+    }
+
+    .filters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        margin-top: 20px;
+        color: black;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        cursor: pointer;
+        color: white;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .pagination button:hover {
+        background-color: #0056b3;
+    }
+
+    .write-button {
+        width: 6%;
+        display: flex;
+        cursor: pointer;
+        font-size: 16px;
+        color: #007bff;
+        border: 1px solid #007bff;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .write-button i {
+        margin-right: 5px;
+    }
+
+    .write-button:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .write-form {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        z-index: 1001;
+        color: black;
+        border-radius: 8px;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+
+    .write-form {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1001;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.write-form h1 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.write-form label {
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.write-form input[type="text"],
+.write-form textarea,
+.write-form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.write-form textarea {
+    height: 200px;
+    resize: none; /* 사용자가 크기 조정 못하도록 함 */
+}
+
+.write-form button {
+    display: block; /* 버튼을 블록 요소로 설정 */
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.write-form button:hover {
+    background-color: #0056b3;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+        <div class="logo">커리어 허브</div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">마이 로드</a></li>
+                <li><a href="#">로드 평가</a></li>
+                <li><a href="#">면접 후기</a></li>
+                <li><a href="#">로드 공유</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="#">마이 페이지</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      // 메뉴 토글 스크립트
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          document.querySelector('.side-menu').classList.toggle('open');
+      });
+      </script>
+        <div class="container">
+            <div class="sidebar">
+                <input type="text" id="jobSearch" placeholder="직무 검색..." onkeyup="filterJobs()">
+                <h2>직군 선택</h2>
+                <ul id="jobList">
+                    <li onclick="filterPosts('모두 보기')">모두 보기</li>
+                    <li onclick="filterPosts('개발자')">개발자</li>
+                    <li onclick="filterPosts('디자이너')">디자이너</li>
+                    <li onclick="filterPosts('회계')">회계</li>
+                    <li onclick="filterPosts('법무.총무.사무')">법무.총무.사무</li>
+                    <li onclick="filterPosts('영업')">영업</li>
+                    <li onclick="filterPosts('고객상담')">고객상담</li>
+                    <li onclick="filterPosts('물류')">물류</li>
+                    <li onclick="filterPosts('기획')">기획</li>
+                    <li onclick="filterPosts('운송')">운송</li>
+                    <li onclick="filterPosts('서비스')">서비스</li>
+                    <li onclick="filterPosts('생산')">생산</li>
+                    <li onclick="filterPosts('건설')">건설</li>
+                    <li onclick="filterPosts('의료')">의료</li>
+                    <li onclick="filterPosts('연구')">연구</li>
+                    <li onclick="filterPosts('교육')">교육</li>
+                    <li onclick="filterPosts('스포츠')">스포츠</li>
+                    <li onclick="filterPosts('보험')">보험</li>
+                    <li onclick="filterPosts('복지')">복지</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="board-header">
+                    <div>
+                        <div class="board-title">직군 Q&A 게시판</div>
+                        <div class="board-subtitle">자신과 같은 계열의 직무 사람들과 다양한 소통을 해보세요.</div>
+                    </div>
+                    <select>
+                        <option value="newest">최신순</option>
+                        <option value="views">조회순</option>
+                        <option value="likes">추천순</option>
+                    </select>
+                </div>
+                <table id="postsTable">
+                    <thead>
+                        <tr>
+                            <th>직무</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="post">
+                            <td>무역</td>
+                            <td>게시글 제목</td>
+                            <td>작성자</td>
+                            <td>2021-06-01</td>
+                            <td>150</td>
+                            <td>24</td>
+                        </tr>
+                        <tr class="post">
+                          <td>회계</td>
+                          <td>게시글 제목</td>
+                          <td>작성자</td>
+                          <td>2021-06-01</td>
+                          <td>150</td>
+                          <td>24</td>
+                      </tr>
+                      <tr class="post">
+                        <td>사무</td>
+                        <td>게시글 제목</td>
+                        <td>작성자</td>
+                        <td>2021-06-01</td>
+                        <td>150</td>
+                        <td>24</td>
+                    </tr>
+                    <tr class="post">
+                      <td>디자이너</td>
+                      <td>게시글 제목</td>
+                      <td>작성자</td>
+                      <td>2021-06-01</td>
+                      <td>150</td>
+                      <td>24</td>
+                  </tr>
+                  <tr class="post">
+                    <td>개발자</td>
+                    <td>게시글 제목</td>
+                    <td>작성자</td>
+                    <td>2021-06-01</td>
+                    <td>150</td>
+                    <td>24</td>
+                </tr>
+                <tr class="post">
+                  <td>개발자</td>
+                  <td>게시글 제목</td>
+                  <td>작성자</td>
+                  <td>2021-06-01</td>
+                  <td>150</td>
+                  <td>24</td>
+              </tr>
+              <tr class="post">
+                <td>영업</td>
+                <td>게시글 제목</td>
+                <td>작성자</td>
+                <td>2021-06-01</td>
+                <td>150</td>
+                <td>24</td>
+            </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button>이전</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>다음</button>
+                </div>
+                <div class="write-button">
+                    <i class="fas fa-pencil-alt" onclick="showForm()"></i> 글 작성
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="write-form">
+            <h1>글 작성하기</h1>
+            <form id="postForm">
+                <label>직무 선택:</label>
+                <select id="job">
+                    <option value="개발자">개발자</option>
+                    <option value="디자이너">디자이너</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <label>제목:</label>
+                <input type="text" id="title" required>
+                <label>작성자:</label>
+                <input type="text" id="author" required>
+                <label>본문:</label>
+                <textarea id="content" required></textarea>
+                <button type="button" onclick="submitPost()">작성 완료</button>
+            </form>
+        </div>
+<script>//이 글작성 스크립트
+const jobs = ["개발자", "디자이너", "회계", "법무.총무.사무", "영업", "고객상담", "물류", "기획", "운송", "서비스", "생산", "건설", "의료", "연구", "교육", "스포츠", "보험", "복지"];
+const jobSelect = document.getElementById('job');
+jobs.forEach(job => {
+    const option = document.createElement('option');
+    option.value = job;
+    option.textContent = job;
+    jobSelect.appendChild(option);
+});
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.write-button').addEventListener('click', toggleWriteForm);
+  });
+
+// 폼을 보여주고 숨기는 함수
+function toggleWriteForm() {
+    var form = document.querySelector('.write-form');
+    var overlay = document.querySelector('.overlay');
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        overlay.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+}
+
+  </script>
+
+  <script>
+  function showForm() {
+        document.querySelector('.write-form').style.display = 'block';
+        document.querySelector('.overlay').style.display = 'block'; 
+    }
+
+    function submitPost() {
+        const job = document.getElementById('job').value;
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const content = document.getElementById('content').value;
+        const date = new Date().toLocaleDateString();
+ㄴ
+
+           // 추천, 조회수 DB없어서 그냥 무작위로 설정한다 가정
+           setTimeout(() => {
+
+        const views = Math.floor(Math.random() * 100); 
+        const likes = Math.floor(Math.random() * 100); 
+
+        const tbody = document.querySelector('#postsTable tbody');
+        const tr = document.createElement('tr');
+        tr.className = "post"; 
+        tr.innerHTML = `<td>${job}</td><td>${title}</td><td>${author}</td><td>${date}</td><td>${views}</td><td>${likes}</td>`;
+        tr.dataset.content = content;
+        tbody.appendChild(tr);
+
+        document.querySelector('.write-form').style.display = 'none';
+        document.getElementById('job').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('author').value = '';
+        document.getElementById('content').value = '';
+        document.querySelector('.overlay').style.display = 'none';
+        addEventListenersToPosts(); // 이벤트 리스너 다시 할당
+    }, 1000); // 1초후 게시글 업로드
+}
+
+</script>
+<script>//직무검색 스크립트
+        function filterJobs() {
+            var input = document.getElementById('jobSearch');
+            var filter = input.value.toUpperCase();
+            var ul = document.getElementById("jobList");
+            var li = ul.getElementsByTagName('li');
+            for (var i = 0; i < li.length; i++) {
+                var txtValue = li[i].textContent || li[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterPosts(jobCategory) {
+    const posts = document.querySelectorAll('#postsTable tbody tr');
+    posts.forEach(post => {
+        const jobInPost = post.cells[0].textContent; // 첫 번째 셀이 직군을 나타냄
+        if (jobInPost === jobCategory || jobCategory === '모두 보기') {
+            post.style.display = '';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+}
+</script>
+<script>
+function addEventListenersToPosts() {
+    const posts = document.querySelectorAll('.post');
+    posts.forEach(post => {
+        post.removeEventListener('click', handlePostClick); // 기존 이벤트 리스너를 제거합니다.
+        post.addEventListener('click', handlePostClick); // 새로운 이벤트 리스너를 추가합니다.
+    });
+}
+
+function handlePostClick() {
+    const job = this.cells[0].textContent;
+    const title = this.cells[1].textContent;
+    const author = this.cells[2].textContent;
+    const date = this.cells[3].textContent;
+    const views = this.cells[4].textContent;
+    const likes = this.cells[5].textContent;
+    const content = this.dataset.content; // 본문 내용 추출
+
+    const queryParams = new URLSearchParams();
+    queryParams.append('job', job);
+    queryParams.append('title', title);
+    queryParams.append('author', author);
+    queryParams.append('date', date);
+    queryParams.append('views', views);
+    queryParams.append('likes', likes);
+    queryParams.append('content', content);
+
+    window.location.href = `detailPage.html?${queryParams.toString()}`;
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    addEventListenersToPosts(); // 페이지 로드 시 이벤트 리스너를 추가합니다.
+});
+</script>
+</body>
+</html>

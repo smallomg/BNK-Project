@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+font-family: 'SDSamliphopangche_Outline';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+} 
+body {
+  font-family: 'SDSamliphopangche_Outline';
+  color: white;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.header.show {
+  opacity: 1;
+}
+
+.header .logo {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.nav {
+  float: right;
+  margin-right: 30px;
+  
+}
+
+.header .nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header .nav ul li {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 20px;
+}
+.nav ul li a {
+  color: black;
+  text-decoration: none;
+
+}
+
+.header .nav ul li:first-child {
+  margin-left: 0;
+}
+
+
+
+.logo {
+margin-left: 50px;
+font-size: 24px;
+font-weight: bold;
+}
+
+.menu-toggle {
+cursor: pointer;
+position: absolute;
+top: 30px;
+transform: translateY(-50%);
+left: 10px;
+font-size: 30px;
+color: orange;
+}
+
+
+
+
+.side-menu {
+  position: fixed;
+  left: -250px; /* 메뉴바 숨기기 */
+  margin-top: 45px;
+  width: 200px;
+  height: 100%;
+  background: whitesmoke;
+  transition: left 0.3s;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  padding: 10px 0;
+
+}
+
+.side-menu ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+.main-banner {
+  text-align: center;
+  font-size: 24px;
+  
+  
+}
+
+.main-banner {
+position: relative;
+background-image: url('메인 베너.png');
+background-size: cover;
+width: 100%;
+height: 750px; /* 이미지의 높이에 맞게 조정 */
+box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.overlay-content {
+position: absolute;
+top: 3%; /* 상단에서부터의 위치 조정 */
+width: 100%; /* 전체 너비를 차지하도록 설정 */
+display: flex;
+justify-content: space-around; /* 요소들 사이에 공간을 동일하게 배분 */
+text-align: center;
+color: white; /* 텍스트 색상을 흰색으로 설정 */
+}
+@keyframes slideInFromRight {
+0% {
+max-width: 60%;   /* 시작할 때 너비 0 */
+opacity: 0;     /* 투명하게 시작 */
+}
+100% {
+max-width: 100%; /* 끝날 때 너비 100% */
+opacity: 1;     /* 완전 불투명 */
+}
+}
+.banner-text {
+font-family: 'ROBOTO';
+font-weight: 900;
+position: relative;
+top:10%;
+text-align: right;
+padding: 10px;
+width: 97%;
+color: white; /* 텍스트 색상은 흰색 */
+box-sizing: border-box;
+overflow: hidden; /* 넘치는 내용 숨기기 */
+animation: slideInFromRight 1s ease-out forwards; /* 애니메이션 적용 */
+}
+
+.button-container {
+display: flex;
+justify-content: right; 
+padding: 20px 20PX; /* 상하 패딩 추가 */
+}
+
+.manage-career-button {
+background-color: #ff7f00; /* 주황색 배경 */
+color: white; /* 흰색 텍스트 */
+padding: 10px 80px; /* 버튼 패딩 */
+font-size: 16px; /* 글자 크기 */
+font-weight: bold;/* 글자 두께 */
+border: none; /* 테두리 제거 */
+text-decoration: none; /* 링크 밑줄 제거 */
+transition: background-color 0.3s ease; /* 부드러운 색상 변화 */
+margin-right: 180px; /* 버튼을 오른쪽으로 살짝 이동 */
+}
+
+.manage-career-button:hover {
+background-color: #e67e22; /* 호버 시 색상 변경 */
+cursor: pointer; /* 호버 시 커서 변경 */
+}
+
+.banner-text h1 {
+font-size: 40px; /* 제목의 글자 크기 */
+font-weight: bold; /* 글자 두껍게 */
+margin-bottom: 10px; /* 제목 아래 마진 추가 */
+line-height: 2.2;
+
+}
+
+.banner-text p {
+font-size: 40px;
+font-size: 20px; /* 문단의 글자 크기 */
+margin-top: 5px; /* 문단 위 마진 추가 */
+margin-right: 210px;
+}
+
+.logo1 {
+font-family: 'ROBOTO';
+font-weight: 900;
+float: none; /* flexbox를 사용하므로 float 속성 제거 */
+margin-left: 0px; /* 기본 마진 제거 */
+flex: 0 1 auto;
+margin-left: 20px;
+}
+.logo1 img{
+top: 0;
+width: 300px;
+height: 100px;
+
+}
+
+.nav1 {
+float: none; /* flexbox를 사용하므로 float 속성 제거 */
+margin-right: 0; /* 기본 마진 제거 */
+flex: 1; /* 네비게이션 메뉴가 남은 공간을 채우도록 설정 */
+justify-content: flex-end;
+}
+
+.nav1 ul {
+display: flex; /* 네비게이션 메뉴 항목을 가로로 나열 */
+list-style: none;
+justify-content: flex-end;
+padding: 0;
+margin: 0; 
+}
+
+.nav1 ul li {
+margin-right: 30px;
+}
+
+.nav1 ul li a {
+font-family: 'ROBOTO';
+font-weight: 900;
+color: white; /* 링크 색상을 흰색으로 설정 */
+text-decoration: none;
+font-size: 15px;
+}
+.nav ul li:first-child {
+margin-left: 0; /* 첫 번째 항목의 왼쪽 마진 제거 */
+}
+.main1{
+  margin-top: 100px;
+  text-align: center;
+
+}
+.main1 img{
+width: 100px;
+display: inline-block;
+
+}
+.main1 h1{
+  color: black;
+  font-size: 40px;
+}
+.main1 p{
+  font-family: 'ROBOTO';
+  font-weight: 900;
+  font-size: 15px;
+  color: gray;
+}
+.link {
+text-align: center;
+margin-top: 20px;
+}
+
+.button {
+background-image: linear-gradient(to right, #f08d31, #f68b00); /* 그라디언트 배경 */
+border: none;
+color: white;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px; /* 글자 크기 증가 */
+padding: 20px 40px; /* 패딩 조정으로 크기 증가 */
+margin: 10px 40px;
+transition: transform 0.2s, box-shadow 0.2s;
+border-radius: 30px; /* 둥근 모서리로 더 화살표처럼 보이도록 */
+cursor: pointer;
+box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* 그림자 효과 추가 */
+}
+
+.button:hover {
+transform: scale(1.05); /* 호버 시 약간 확대 */
+box-shadow: 0 6px 8px rgba(0,0,0,0.3); /* 호버 시 그림자 효과 강조 */
+}
+
+.button:active {
+background-image: linear-gradient(to right, #004085, #002752); /* 클릭 시 그라디언트 색 변경 */
+transform: translateY(2px); /* 클릭 시 버튼이 살짝 아래로 이동 */
+}
+
+
+@keyframes slideDown {
+from {
+opacity: 0;
+transform: translateY(-20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.animate-slideDown {
+animation: slideDown 0.5s ease-out forwards;
+}
+
+
+.main2{
+display: flex; /* Flexbox 레이아웃 사용 */
+align-items: center; /* 세로축 중앙 정렬 */
+justify-content: space-between; /* 항목 사이에 공간 배분 */       
+margin-top: 100px;
+width:  auto;
+height: 700px;
+background-color: rgba(244, 239, 239, 0.839);
+color: black;
+padding-left: 120px;
+
+}
+.main2-text { /* 텍스트를 감싸는 div에 대한 스타일 */
+flex: 1; /* 텍스트 영역과 이미지 영역이 유연하게 조정되도록 설정 */
+padding-right: 20px; /* 텍스트와 이미지 사이에 공간 추가 */
+}
+
+.main2 h2{
+  color: black;
+  line-height: 1.5;
+  font-size: 40px;
+}
+
+.main2 h5{
+color: orange;
+font-size: 20px;
+}
+.main2-text p {
+font-style: italic;
+width: 70%;
+color: #555; /* 조금 더 읽기 편한 색상으로 조정 */
+background-color: #f0f0f0; /* 배경색 추가 */
+border-left: 5px solid orange; /* 좌측 테두리에 강조색 추가 */
+padding: 15px;
+margin: 20px 0;
+border-radius: 5px;
+box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 부드러운 그림자 효과 */
+}
+
+.main2 img { /* 이미지에 대한 스타일 */
+width: 550px; /* 이미지가 차지할 수 있는 최대 너비 */
+height: 530px; 
+margin-right: 80px;
+}  
+
+
+
+.main3 {
+display: flex; /* Flexbox 레이아웃 사용 */
+align-items: center; /* 세로축 중앙 정렬 */
+justify-content: space-between; /* 항목 사이에 공간 배분 */
+width: 90%;
+height: auto; /* 높이를 auto로 조정하여 내용물에 맞춤 */
+margin-left: 90px;
+margin-top: 150px;
+padding: 20px; /* 적당한 패딩 추가 */
+}
+.main3-text { /* 텍스트를 감싸는 div에 대한 스타일 */
+flex: 1; /* 텍스트 영역과 이미지 영역이 유연하게 조정되도록 설정 */
+padding-right: 20px; /* 텍스트와 이미지 사이에 공간 추가 */
+}
+
+.main3 h2{
+  color: black;
+  line-height: 1.5;
+  font-size: 40px;
+}
+
+.main3 h5{
+color: orange;
+font-size: 20px;
+}
+
+.main3 p{
+  color: gray;
+  font-size: 20px;
+}
+.main3 img { /* 이미지에 대한 스타일 */
+max-width: 50%; /* 이미지가 차지할 수 있는 최대 너비 */
+height: 500px; /* 이미지의 높이를 자동으로 조정 */
+margin-right: 50px;
+}  
+.button-style {
+background-color: orange; /* 배경색 설정 */
+color: white; /* 텍스트 색 설정 */
+border: none; /* 테두리 제거 */
+padding: 10px 20px; /* 내부 여백 설정 */
+margin-top: 20px; /* 상단 여백 설정 */
+margin-right: 10px; /* 우측 여백 설정 */
+border-radius: 5px; /* 버튼 모서리 둥글게 */
+cursor: pointer; /* 마우스 오버 시 커서 변경 */
+font-size: 16px; /* 글자 크기 */
+font-weight: bold; /* 글자 두께 */
+transition: background-color 0.3s; /* 배경색 변경 애니메이션 */
+}
+
+.button-style:hover {
+background-color: #e67e22; /* 호버 시 배경색 변경 */
+}
+
+.main4{
+display: flex; /* Flexbox 레이아웃 사용 */
+align-items: center; /* 세로축 중앙 정렬 */
+justify-content: space-between; /* 항목 사이에 공간 배분 */       
+margin-top: 100px;
+width:  auto;
+height: 700px;
+background-color: rgba(244, 239, 239, 0.839);
+color: black;
+padding-left: 120px;
+
+}
+.main4-text { /* 텍스트를 감싸는 div에 대한 스타일 */
+flex: 1; /* 텍스트 영역과 이미지 영역이 유연하게 조정되도록 설정 */
+padding-right: 20px; /* 텍스트와 이미지 사이에 공간 추가 */
+}
+
+.main4 h2{
+  color: black;
+  line-height: 1.5;
+  font-size: 40px;
+}
+
+.main4 h5{
+color: orange;
+font-size: 20px;
+}
+
+.main4 img { /* 이미지에 대한 스타일 */
+max-width: 50%; /* 이미지가 차지할 수 있는 최대 너비 */
+height: 500px; 
+margin-right: 80px;
+}  
+
+.interview-tips {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+margin-top: 20px;
+}
+
+.tip {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.arrow {
+font-size: 24px;
+margin-right: 10px;
+color: orange; /* Customize the color to fit your design */
+}
+
+.tip p {
+margin: 0;
+font-size: 16px; /* Adjust the size as needed */
+color: black; /* Customize the color to fit your design */
+}
+.main5 {
+display: flex;
+align-items: center; /* 세로축 중앙 정렬 */
+justify-content: space-between; /* 항목 사이에 공간 배분 */ 
+width: auto;
+height: 700px;
+background-color: white;
+color: black;
+padding-left: 120px;
+}
+
+.main5-text { /* 텍스트를 감싸는 div에 대한 스타일 */
+flex: 1; /* 텍스트 영역과 이미지 영역이 유연하게 조정되도록 설정 */
+padding-right: 20px; /* 텍스트와 이미지 사이에 공간 추가 */
+}
+
+.main5 h2 {
+color: black;
+line-height: 1.5;
+font-size: 40px;
+}
+
+.main5 h5 {
+color: orange;
+font-size: 20px;
+}
+
+.main5 p {
+color: gray;
+font-size: 20px;
+}
+
+.main5 img { /* 이미지에 대한 스타일 */
+max-width: 50%; /* 이미지가 차지할 수 있는 최대 너비 */
+height: 500px; /* 이미지의 높이를 자동으로 조정 */
+margin-right: 50px;
+}
+.main6{
+width: auto;
+height: 700px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+background-color: #191C27;
+}
+.main6 h5{
+color: orange;
+font-size: 20px;
+}
+.main6 h2 {
+color: white;
+margin: 20px 0;
+font-size: 40px;
+
+}
+
+.main6 p {
+color: whitesmoke;
+font-size: 20px;
+margin-bottom: 15px;
+line-height: 1.7;
+}
+.template-slider {
+display: flex;
+justify-content: center;
+gap: 20px; /* 이미지 사이의 간격 */
+overflow: hidden;
+padding: 20px 0;
+}
+
+.template-slide {
+transition: transform 0.5s ease;
+display: inline-block;
+}
+
+.template-slide img {
+width: 130px; /* 기본 이미지 크기 */
+height: 100px;
+transition: transform 0.5s ease;
+}
+
+.template-slide.active img {
+transform: scale(1.5); /* 포커스된 이미지를 살짝 키움 */
+}
+.open-badge-section {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+color: white;
+text-align: center;
+padding: 100px 20px;
+position: relative;
+overflow: hidden;
+}
+
+.open-badge-section::before,
+.open-badge-section::after {
+content: '';
+position: absolute;
+width: 300px;
+height: 300px;
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 50%;
+z-index: 0;
+}
+
+.open-badge-section::before {
+top: -50px;
+left: -50px;
+animation: float 6s ease-in-out infinite;
+}
+
+.open-badge-section::after {
+bottom: -50px;
+right: -50px;
+animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+0%, 100% {
+  transform: translateY(0);
+}
+50% {
+  transform: translateY(-20px);
+}
+}
+
+.badge-content {
+position: relative;
+z-index: 1;
+max-width: 800px;
+padding: 20px;
+background-color: rgba(0, 0, 0, 0.5);
+border-radius: 20px;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.badge-icon {
+font-size: 80px;
+margin-bottom: 20px;
+animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+0%, 100% {
+  transform: translateY(0);
+}
+50% {
+  transform: translateY(-10px);
+}
+}
+
+.open-badge-section h1 {
+font-size: 36px;
+font-weight: bold;
+margin-bottom: 20px;
+text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.open-badge-section p {
+font-size: 18px;
+line-height: 1.6;
+margin-bottom: 30px;
+text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.learn-more-button {
+background: linear-gradient(45deg, #ff416c, #ff4b2b);
+color: white;
+padding: 15px 40px;
+font-size: 18px;
+font-weight: bold;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.learn-more-button:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+}
+.main7 {
+font-family: 'ROBOTO';
+font-weight: 900;  
+position: relative; /* 포지션 설정 */
+padding: 40px;
+text-align: center;
+overflow: hidden;
+height: 700px;
+}
+
+.main7::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('job1.png'); /* 배경 이미지 URL */
+background-size: cover; /* 이미지가 컨테이너를 채우도록 설정 */
+background-position: center; /* 이미지 중앙 정렬 */
+filter: blur(6px); /* 흐림 효과 적용 */
+z-index: -1; /* 컨텐츠 뒤로 이동 */
+}
+.main7 * {
+position: relative; /* 가상 요소 위에 표시되도록 설정 */
+z-index: 1;
+}
+
+.main7 h2 {
+margin-bottom: 20x;
+margin-left: 560px;
+font-size: 30px;
+}
+.main7 h5{
+text-align: center;
+color: orange;
+margin-right: 30px;
+}
+.main7-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+
+.more-info-button {
+background-color: orange; /* 파란색 배경 */
+color: white;
+padding: 10px 20px;
+text-decoration: none;
+border-radius: 5px;
+font-weight: bold;
+transition: background-color 0.3s ease-in-out;
+}
+
+.more-info-button:hover {
+background-color: rgb(247, 187, 75);    
+}
+.main7 h4{
+line-height: 3;
+margin-right: 30px;
+}
+.apply-button {
+display: inline-block;
+background-color: orange;
+color: white;
+padding: 5px 20px;
+text-decoration: none;
+border-radius: 5px;
+margin-top: 15px;
+}
+
+.apply-button:hover {
+background-color: #e67e22;
+}
+.job-section {
+margin-top: 25px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+}
+
+.job-card {
+border-radius: 30px;
+width: 140px;
+height: auto;
+box-shadow: 0 4px 8px rgba(49, 49, 49, 0.894);
+transition: transform 0.3s ease-in-out;
+}
+
+.job-card:hover {
+transform: translateY(-10px);
+}
+
+
+footer { 
+font-family: 'ROBOTO';
+font-weight: 100;
+width: 100%; 
+color: white;
+background-color: #807f7f;
+text-align: center;
+margin: 0;
+padding: 1px 0;
+
+}

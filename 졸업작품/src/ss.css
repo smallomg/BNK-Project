@@ -1,0 +1,259 @@
+ @font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BagelFatOne-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_JAMO@1.0/BagelFatOne-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body, html {
+  font-family: 'SDSamliphopangche_Outline';
+  margin: 0;
+  padding: 0;
+  background-color: white ;
+  
+}
+
+  .navbar {
+    position: sticky;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: white;
+  color: #fff;
+  padding: 10px 20px;
+  top: 0; /* 화면 상단 가장자리에 위치 */
+  left: 0; /* 화면 왼쪽 가장자리에 위치 */
+  width: 100%; /* 너비를 화면 전체로 설정 */
+  box-sizing: border-box; /* padding을 포함한 박스 모델 적용 */
+  z-index: 1000; /* 다른 요소들 위에 표시 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .navbar-logo, .navbar-links, .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-logo img {
+    width: 220px;
+    height: 60px;
+    border-radius: 4px;
+    
+  }
+  .navbar-links a, .navbar-right a {
+    font-family: 'SDSamliphopangche_Outline', sans-serif;
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 15px;
+  }
+  .navbar-links a:hover, .navbar-right a:hover {
+    text-decoration: underline;
+  }
+  .search-box {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  .search-box input[type="text"] {
+    padding: 5px;
+    border-radius: 10px ㄴ;
+
+  }
+  .search-box input[type="submit"] {
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .main {
+    position: relative; /* 부모를 상대 위치로 설정 */
+}
+ .main img{
+    height: 700px;
+    width: 100%;
+    position: relative;
+     
+  }
+
+.overlay-images {
+    position: absolute;
+    top: 90px; /* 메인 이미지의 상단 가장자리에 위치 */
+    left: 537px; /* 메인 이미지의 좌측 가장자리에 위치 */
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* 이미지를 2행으로 나눔 */
+    grid-gap: 60px; /* 이미지 사이의 간격 */
+    
+}
+
+.row {
+    display: flex;
+    justify-content: center; 
+    grid-gap: 153px
+}
+
+.row img {
+    width:300px;
+    height: 190px;
+    border: 1px;
+   
+	}
+
+  .zoom_image { 
+    overflow:hidden;
+   }
+  
+  .zoom_image img {
+    
+		transform:scale(1);
+		transition:all 0.5s;
+	}
+	.zoom_image:hover img {
+		transform:scale(1.2);
+	}
+
+  .zoom_image p {
+  font-family: 'SDSamliphopangche_Outline';
+  color: white; /* 텍스트 색상 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  font-size: 16px; /* 텍스트 크기 */
+  }
+
+.productt { background-color: white;
+            border: 3px solid #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            width: 900px;
+        }
+.productt a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'BagelFatOne-Regular', sans-serif;
+            
+        }
+
+    .qna {
+    margin-top: 100px;
+    margin-left: 80px;
+    position: relative;
+   }
+
+   .slide h4{
+    font-size: 20px;
+    font-family: 'SDSamliphopangche_Outline';
+   }
+
+
+.qna1{
+  margin-top: 550px;
+  margin-left: 80px;
+}
+
+ .qna img, .qna1 img{
+  height: 250px;
+  width: 730px;
+  border-radius: 8px;
+
+ }
+ .qq img{
+  float:right;
+  width:600px; 
+  height:350px;
+  margin-top: -350px;
+ }
+ .right{
+  float: right;
+  margin-top: 100px;
+  
+ }
+
+ .right img{
+  height: 250px;
+  width: 650px;
+  border-radius: 8px;;
+
+ }
+
+.ee img{
+  position: absolute;
+  left: 80px;
+  width: 680px;
+  height: 350px;
+  margin-top: -350px;
+  
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 5 columns */
+    grid-template-rows: repeat(3, 200px); /* 3 rows with 200px height each */
+    gap: 20px;
+    padding: 20px;
+    margin-top: 550px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .template {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .template-info {
+    padding: 15px;
+  }
+
+  .template-title {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .template-description {
+    font-size: 14px;
+    color: #666;
+  }
+  .main-content  {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 100px;
+  border-top: 2px solid black;
+}
+
+.job-announcements {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Now creates 5 columns */
+  grid-gap: 40px; /* Space between grid items */
+  padding: 0px;
+  margin-top: 10px; /* Ensure it does not overlap the fixed navbar */
+}
+
+.job-announcement {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 10px;
+}
+
+.job-announcement img {
+  max-width: 100%;
+  height: 180px;
+}
+footer {
+            background: whitesmoke;
+            text-align: center;
+		       	clear:both;
+		       	margin: 0;
+            padding: 1px 0;
+            width: 100%; 
+		       }

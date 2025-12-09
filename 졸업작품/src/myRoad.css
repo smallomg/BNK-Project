@@ -1,0 +1,624 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+@font-face {
+font-family: 'SDSamliphopangche_Outline';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+} 
+
+    body {
+        font-family: 'SDSamliphopangche_Outline';
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 30px 0px;
+        z-index: 1000;  
+    }
+
+    .header .logo {
+        float: left;
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .nav {
+        float: right;
+        margin-right: 30px;   
+    }
+
+    .header .nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header .nav ul li {
+        display: inline-block;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    .nav ul li a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .header .nav ul li:first-child {
+        margin-left: 0;
+    }
+
+    
+
+.logo {
+margin-left: 50px;
+font-size: 24px;
+font-weight: bold;
+}
+
+.menu-toggle {
+cursor: pointer;
+position: absolute;
+top: 30px;
+transform: translateY(-50%);
+left: 10px;
+font-size: 30px;
+color: orange;
+}  
+.side-menu {
+        position: fixed;
+        left: -250px; /* 메뉴바 숨기기 */
+        margin-top: 45px;
+        width: 200px;
+        height: 100%;
+        background: whitesmoke;
+        transition: left 0.3s;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .side-menu.open {
+        left: 0;
+    }
+
+    .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .side-menu ul li {
+        padding: 10px 0;
+    
+    }
+
+    .side-menu ul li a {
+        color: black;
+        text-decoration: none;
+}
+.container {
+display: flex;
+width: 100%;
+height: auto;
+}
+.headers {
+flex: 1;
+margin-top: 100px;
+padding: 0;
+display: flex;
+flex-direction: column;
+}
+.headers video {
+width: 90%;
+height: 100%;
+margin-left: 35px;
+}
+.photo-gallery {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 10px; /* 사진 간의 간격을 좁게 조정 */
+margin-top: 100px;
+margin-right: 30px;
+height: 350px;
+}
+.photo-gallery .photo {
+position: relative;
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.3s;
+height: calc(100% / 3); /* 높이를 3등분하여 맞춤 */
+}
+.photo-gallery .photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+.photo-gallery .photo:nth-child(2) img {
+clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+.photo-gallery .photo:nth-child(3) img {
+clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+}
+.photo-gallery .photo .description {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+opacity: 0;
+transition: opacity 0.3s;
+}
+.photo-gallery .photo:hover {
+transform: scale(1.1);
+}
+.photo-gallery .photo:hover .description {
+opacity: 1;
+}
+.central-photo {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1000;
+display: none;
+width: 600px;
+height: 600px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.central-photo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.personal-info { text-align: right;  }
+.tabs { list-style: none; 
+ display: flex; 
+ padding: 10px 0;
+ background: #eee;
+  }
+
+.tabs li { padding: 10px 20px; 
+     cursor: pointer; 
+     font-weight: bold; 
+    }
+.tabs li:not(:last-child) { border-right: 1px solid #ccc;}
+.resumes-container {
+display: flex;
+justify-content: center; /* 수평 가운데 정렬 */
+align-items: center; /* 수직 가운데 정렬 */
+width: 100%;
+height: auto;
+background: #eee;
+margin-top: -20px;
+}
+.resumes {
+width: 1200px;
+background-color:  #f4f4f4; 
+padding: 5px;
+border-radius: 10px;
+display: flex;
+flex-direction: row;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+color: #000;
+}
+.left-column {
+width: 25%;
+text-align: center;
+padding: 20px;
+background-color: #e0e0e0;
+border-radius: 10px 0 0 10px;
+}
+.left-column img {
+border-radius: 25%;
+width: 150px;
+height: 150px;
+}
+.contact-info, .skills, .profile-pic {
+margin-top: 20px;
+}
+.contact-info p {
+margin: 10px 0;
+font-size: 14px;
+color: #333;
+}
+.contact-info p i {
+display: block;
+margin-bottom: 5px;
+}
+.skills {
+margin-top: 20px;
+text-align: center;
+}
+.skills h3 {
+margin-bottom: 10px;
+font-size: 16px;
+color: #333;
+}
+.skill-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+}
+.skill {
+text-align: center;
+}
+.skill img {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-bottom: 10px;
+}
+.skill .bar {
+width: 100%;
+height: 10px;
+background-color: #d0d0d0;
+border-radius: 5px;
+overflow: hidden;
+}
+.skill .bar .level {
+height: 100%;
+background-color: #4caf50;
+}
+.right-column {
+width: 70%;
+padding: 20px;
+border-radius: 0 10px 10px 0;
+}
+.section {
+margin-bottom: 15px;
+}
+.section h2 {
+border-bottom: 1px solid #4caf50;
+padding-bottom: 5px;
+margin-bottom: 10px;
+font-size: 18px;
+color: #333;
+}
+.job, .activity {
+margin-bottom: 10px;
+font-size: 14px;
+}
+.section p {
+margin: 5px 0;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 15px;
+}
+table th, table td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: center;
+}
+table th {
+background-color: #e0e0e0;
+color: #333;
+}
+table td {
+background-color: #ffffff;
+color: #333;
+}
+.job {
+display: flex;
+align-items: flex-start;
+margin-bottom: 20px;
+}
+.job i {
+font-size: 30px;
+margin-right: 10px;
+color: #4caf50;
+}
+.job-details {
+flex-grow: 1;
+}
+.job-details h3, .job-details h4 {
+margin: 0;
+color: #333;
+}
+.job-details p {
+margin: 5px 0;
+color: #666;
+}
+.certifications ul {
+list-style-type: circle;
+padding-left: 20px;
+}
+.certifications li {
+margin: 5px 0;
+color: #333;
+}
+.activity-card {
+background-color: #e0e0e0;
+padding: 10px;
+border-radius: 5px;
+margin-bottom: 10px;
+color: #333;
+}
+.activity-card h4, .activity-card p {
+margin: 5px 0;
+color: #333;
+}
+.activity-card h4, .activity-card p {
+margin: 5px 0;
+color: #333;
+}
+.resume-templates-container {
+text-align: center; /* Center the buttons */
+margin-top: 20px; /* Space from the top content */
+}
+
+.template-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr); /* 5 columns */
+grid-gap: 20px; /* Space between templates */
+padding: 20px;
+}
+
+.resume-template{
+position: relative;
+background-color: #f4f4f4; 
+border-radius: 5px; 
+padding: 20px; 
+height: 100px; 
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid #ccc; 
+}
+.resume-template img{
+width: 100%; 
+height: 100%; 
+object-fit: cover; 
+border-radius: 5px;
+position: absolute; 
+top: 0;
+left: 0
+
+}
+
+.resume-template.selected {
+border: 3px solid orange; /* 선택된 템플릿 테두리 색상 변경 */
+/* 추가로 원하는 스타일을 적용할 수 있습니다. */
+}
+
+.template-actions {
+margin-top: 20px; 
+}
+
+.btn {
+padding: 10px 20px;
+margin: 0 10px; 
+border-radius: 5px; 
+border: none; 
+font-weight: bold;
+cursor: pointer; 
+}
+
+.create {
+background-color: orange; 
+color: white; 
+}
+
+.save {
+background-color: green; 
+color: white;
+}
+
+/* 자기소개서 탭 스타일 */
+.cover-letter-container {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+}
+
+.input-area {
+width: 45%;
+}
+
+.input-area textarea {
+width: 100%;
+height: 900px;
+margin-bottom: 10px;
+}
+
+.input-area .keywords {
+display: flex;
+margin-bottom: 10px;
+}
+
+.input-area .keywords input {
+flex-grow: 1;
+margin-right: 10px;
+}
+
+.output-area {
+width: 50%;
+padding: 20px;
+background-color: #f4f4f4;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.output-area .generated-content {
+white-space: pre-wrap; /* 줄바꿈과 공백 유지 */
+}
+
+.upload-section {
+margin-top: 20px;
+padding: 20px;
+background-color: #f4f4f4;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload {
+margin-bottom: 20px;
+}
+.btn.upload {
+background-color: orange; /* 배경색 설정 */
+color: white; /* 글자색 설정 */
+}
+
+.btn:hover {
+opacity: 0.9; /* 호버 효과 */
+}
+.uploaded-files ul {
+list-style-type: none;
+padding: 0;
+}
+
+.uploaded-files li {
+margin-bottom: 5px;
+font-size: 0.9em;
+}
+
+/* 업로드 섹션 스타일 */
+.upload-section {
+padding: 20px;
+background-color: #f4f4f4;
+margin-bottom: 20px;
+}
+
+/* 포트폴리오 아이템 리스트 스타일 */
+.portfolio-items {
+padding: 20px;
+background-color: white;
+border: 1px solid #ccc;
+}     
+.portfolio-template {
+background-color: #f4f4f4;
+border-radius: 10px;  
+position: relative;
+overflow: hidden; /* 이미지가 박스를 벗어나지 않도록 설정 */
+margin-bottom: 20px; /* 항목 간 여백 추가 */
+transition: transform 0.3s ease; /* 애니메이션 효과 */
+}
+
+.portfolio-template:hover {
+transform: scale(1.05); /* 마우스 오버 시 확대 */
+}
+
+.portfolio-template img {
+width: 100%;
+height: auto;
+border-radius: 10px; /* 이미지 모서리 둥글게 */
+}
+
+.btn.download {
+position: absolute;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%); /* 버튼을 이미지 중앙 하단에 위치 */
+padding: 10px 20px;
+border-radius: 5px;
+background-color: #4CAF50; /* 녹색 배경 */
+color: white;
+font-weight: bold;
+border: none;
+cursor: pointer;
+}
+
+.tab-content{
+    color:#000;
+}
+
+.btn.download:hover {
+background-color: #45a049; /* 버튼 호버 색상 변경 */
+}
+
+
+/*생성된 이력서 목록부분 */
+.resume-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resume-list h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .resume-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .resume-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .resume-item span {
+    font-size: 16px;
+    color: #444;
+    flex-grow: 1;
+  }
+  
+/*생성된 이력서 목록부분 */
+
+
+/* 생성된 이력서 목록 들어가는 보기 기능 */
+.resume, .modern-resume, .creative-resume {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* 기본 템플릿 스타일 */
+  .resume {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .resume h1 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .resume h2 {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .resume ul {
+    margin-left: 20px;
+  }
+/* 생성된 이력서 목록 들어가는 보기 기능 */

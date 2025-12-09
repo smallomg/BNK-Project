@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>포스트 상세 정보</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    @font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+    
+        body {
+            font-family: 'SDSamliphopangche_Outline';
+            color: white;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px 0px;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .nav {
+            float: right;
+            margin-right: 30px;
+            
+        }
+
+        .header .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header .nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .nav ul li a {
+            color: black;
+            text-decoration: none;
+        
+        }
+
+        .header .nav ul li:first-child {
+            margin-left: 0;
+        }
+.logo {
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 30px;
+    color: orange;
+}  
+  .side-menu {
+            position: fixed;
+            left: -250px; /* 메뉴바 숨기기 */
+            margin-top: 45px;
+            width: 200px;
+            height: 100%;
+            background: whitesmoke;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-menu ul li {
+            padding: 10px 0;
+        
+        }
+
+        .side-menu ul li a {
+            color: black;
+            text-decoration: none;
+}
+.main-container {
+    display: flex;
+    flex-direction: row; /* 가로 방향 배치 */
+    width: 100%; /* 전체 너비 사용 */
+}
+
+.banner-container {
+    width: 25%; /* 배너의 너비를 25%로 설정 */
+    height: 10px;
+    transition: width 0.3s; /* 너비 변화에 애니메이션 적용 */
+    margin-top: 90px;  
+    margin-left: 20px;
+}
+
+.slide-banner {
+    position: relative;
+    max-width: 100%;
+
+}
+
+.slides {
+    display: none;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.ad-banner {
+    margin-top: 20px;
+
+
+}
+
+.slides img, .ad-banner img {
+    width: 100%; /* 이미지를 배너 크기에 맞춤 */
+    height: auto; /* 이미지 높이 자동 조정 */
+    border: 2px solid #ddd; /* 테두리 추가 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    overflow: hidden; /* 내용이 넘칠 때 숨김 처리 */
+    background-color: #f9f9f9; /* 배경 색상 */
+    transition: transform 0.3s ease-in-out; /* 호버 시 효과 */
+}
+.slide-banner:hover, .ad-banner:hover {
+    transform: scale(1.05); /* 호버 시 배너 확대 */
+    border-color: #ccc; /* 호버 시 테두리 색 변경 */
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.filter-container {
+        width: 95%;
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 70px auto 0;
+        border: 2px solid whitesmoke;
+        border-radius: 1px;
+        margin-right: 230px;
+    }
+
+    .filter-section {
+        padding: 10px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    .filter-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.517);
+        margin-bottom: 5px;
+    }
+
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .checkbox-group label {
+        margin-right: 10px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .search-button {
+        display: block;
+        width: auto;
+        padding: 8px 20px;
+        margin: 10px auto;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .search-button:hover {
+        background-color: #0056b3;
+    }
+    .post-color {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* 적절한 높이 설정 */
+}
+
+.line {
+    position: absolute;
+    height: 2px;
+    background: rgba(0, 150, 200, 0.6);
+    animation: drawLine 4s infinite;
+}
+
+@keyframes drawLine {
+    0% { width: 0; }
+    50% { width: 38%; }
+    100% { width: 0; }
+}
+
+    .post-title{
+      color: black;
+      text-align: center;
+      padding-top: 20px;
+      line-height: 30px;
+    }
+
+    .dropdown {
+            width: 200px;
+            margin-left: auto; /* 자동으로 왼쪽 여백을 채워 오른쪽으로 밀어냄 */
+            margin-right: 20px;
+        }
+        .dropdown select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+    .post-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 10px;
+        }
+        .post {
+            position: relative; /* 상대적 위치 설정 */
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden; /* 화살표가 컨테이너를 벗어나지 않도록 */
+        }
+        .post h3 {
+            font-size: 18px;
+            color: black;
+            margin: 5px 0;
+        }
+        .post h4 {
+            font-size: 16px;
+            color: gray;
+            margin: 5px 0;
+        }
+        .tags {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eef;
+            border-radius: 5px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .arrow {
+    position: absolute;
+    top: 50%; /* 세로 중앙 정렬 */
+    right: 10px; /* 오른쪽에서 10px 떨어진 위치 */
+    transform: translateY(-50%); /* Y축 기준 50% 올림 */
+    font-size: 60px;
+    color: #007bff;
+    transition: transform 0.5s ease-out;
+}
+
+.post:hover .arrow {
+    animation: hoverArrow 0.5s forwards;
+    color: #0056b3;
+}
+
+@keyframes hoverArrow {
+    0% {
+        transform: translateX(0) translateY(-50%);
+    }
+    50% {
+        transform: translateX(-10px) translateY(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(0) translateY(-50%) scale(1);
+    }
+}
+        #pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    padding: 5px 10px;
+    margin: 0 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+#pagination button:hover {
+    background-color: whitesmoke;
+}
+.post-button{
+    padding: 5px 10px;
+    margin: 0 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+        .modal { 
+          display: none;
+           position: fixed; 
+           z-index: 1; 
+           left: 0; 
+           top: 0; 
+           width: 100%; 
+           height: 100%; 
+           overflow: auto; 
+           background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; color: black; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 50%; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
+        input[type="text"], select,
+         textarea { width: 100%; padding: 12px; margin: 8px 0; display: 
+            inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+
+.star-rating {
+    display: inline-block;
+    margin: 0 auto; /* 중앙 정렬 */
+    font-size: 20px; /* 별의 크기 조정 */
+    direction: rtl; 
+}
+
+.star-rating > input[type="radio"] {
+    display: none; /* 라디오 버튼 숨기기 */
+}
+
+.star-rating > label {
+    display: inline-block;
+    cursor: pointer;
+    color: #ccc; /* 기본 별 색상 */
+}
+
+.star-rating > label:before {
+    content: "\2605"; /* 별 문자 */
+    position: relative;
+    display: block;
+    font-size: 24px;
+}
+
+.star-rating > label:hover:before,
+.star-rating > label:hover ~ label:before,
+.star-rating > input[type="radio"]:checked ~ label:before {
+    color: #ffd700; /* 선택된 별의 색상 */
+}
+
+
+        .difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-toggle" style="color: black; margin-top:10px;">&#9776;</div>
+        <div class="logo">커리어 허브</div>
+        <div class="nav">
+            <ul>
+                <li><a href="#">마이 로드</a></li>
+                <li><a href="#">로드 평가</a></li>
+                <li><a href="#">면접 후기</a></li>
+                <li><a href="#">로드 공유</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="#">마이 페이지</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+      // 메뉴 토글 스크립트
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          document.querySelector('.side-menu').classList.toggle('open');
+      });
+      </script>
+            <div class="main-container">
+          <div class="banner-container">
+            <div class="slide-banner">
+                <div class="slides fade">
+                    <img src="123321.png" style="width:80%; height: 130px;">
+                </div>
+                <div class="slides fade">
+                    <img src="234432.png" style="width:80%; height: 130px;">
+                </div>
+                <div class="slides fade">
+                    <img src="9910.png" style="width:80%; height: 130px;">
+                </div>
+            </div>
+            <div class="ad-banner">
+                <img src="ba1.png" style="width:80%;">
+            </div>
+            <div class="ad-banner">
+                <img src="ba2.png" style="width:80%">
+            </div>
+        </div>
+   <div class="filter-container">
+    <h2 style="text-align:center; margin-bottom:20px; color: black;">후기 검색</h2>
+    <div class="filter-section">
+        <h3 class="filter-title">직무:</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="job" value="개발자">개발자</label>
+          <label><input type="checkbox" name="job" value="디자이너">디자이너</label>
+          <label><input type="checkbox" name="job" value="회계">회계</label>
+          <label><input type="checkbox" name="job" value="총무/법무/사무">법무.총무.사무</label>
+          <label><input type="checkbox" name="job" value="영업">영업</label>
+          <label><input type="checkbox" name="job" value="고객상담">고객상담</label>
+          <label><input type="checkbox" name="job" value="물류">물류</label>
+          <label><input type="checkbox" name="job" value="기획">기획</label>
+          <label><input type="checkbox" name="job" value="운송">운송</label>
+          <label><input type="checkbox" name="job" value="서비스">서비스</label>
+          <label><input type="checkbox" name="job" value="생산">생산</label>
+          <label><input type="checkbox" name="job" value="건설">건설</label>
+          <label><input type="checkbox" name="job" value="의료">의료</label>
+          <label><input type="checkbox" name="job" value="연구">연구</label>
+          <label><input type="checkbox" name="job" value="교육">교육</label>
+          <label><input type="checkbox" name="job" value="스포츠">스포츠</label>
+          <label><input type="checkbox" name="job" value="보험">보험</label>
+          <label><input type="checkbox" name="job" value="복지">복지</label>
+            <!-- 추가 체크박스 -->
+        </div>
+    </div>
+      <div class="filter-section">
+        <h3 class="filter-title">지역:</h3>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="region" value="서울">서울</label>
+            <label><input type="checkbox" name="region" value="부산">부산</label>
+            <label><input type="checkbox" name="region" value="경기">경기</label>
+            <label><input type="checkbox" name="region" value="인천">인천</label>
+            <label><input type="checkbox" name="region" value="대전">대전</label>
+            <label><input type="checkbox" name="region" value="광주">광주</label>
+            <label><input type="checkbox" name="region" value="강원">광원</label>
+            <br>
+            <label><input type="checkbox" name="region" value="새종">세종</label>
+            <label><input type="checkbox" name="region" value="충북">충북</label>
+            <label><input type="checkbox" name="region" value="충남">충남</label>
+            <label><input type="checkbox" name="region" value="경북">경북</label>
+            <label><input type="checkbox" name="region" value="경남">경남</label>
+            <label><input type="checkbox" name="region" value="전북">전북</label>
+            <label><input type="checkbox" name="region" value="전남">전남</label>
+            <label><input type="checkbox" name="region" value="제주">제주</label>
+              <!-- 나머지 옵션 추가 -->
+          </div>
+      </div>
+      <div class="filter-section">
+        <h3 class="filter-title">합격여부:</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="pass" value="합격"> 학격</label>
+            <label><input type="checkbox" name="pass" value="불합격"> 불합격</label>
+            <label><input type="checkbox" name="pass" value="대기중">대기중</label>
+            <!-- 나머지 옵션 추가 -->
+        </div>
+    </div>
+    <div class="filter-section">
+      <h3 class="filter-title">고용형태:</h3>
+      <div class="checkbox-group">
+          <label><input type="checkbox" name="office" value="경력직">경력</label>
+          <label><input type="checkbox" name="office" value="신입"> 신입</label>
+          <!-- 나머지 옵션 추가 -->
+      </div>
+  </div>
+      <button class="search-button">검색</button>
+  </div>
+</div>
+<script>
+    function toggleBannerSize() {
+var banner = document.querySelector('.banner-container');
+if (banner.style.width === '25%') {
+    banner.style.width = '40%'; // 배너를 더 크게
+} else {
+    banner.style.width = '25%'; // 기본 크기로 복원
+}
+}
+
+    var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+var i;
+var slides = document.getElementsByClassName("slides");
+for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+}
+slideIndex++;
+if (slideIndex > slides.length) {slideIndex = 1}    
+slides[slideIndex-1].style.display = "block";  
+setTimeout(showSlides, 3000); // 이미지를 2초마다 변경
+}
+
+</script>
+  <script>
+function filterPosts() {
+    const posts = document.querySelectorAll('.post');
+    const jobFilters = document.querySelectorAll('input[name="job"]:checked');
+    const regionFilters = document.querySelectorAll('input[name="region"]:checked');
+    const statusFilters = document.querySelectorAll('input[name="pass"]:checked');
+    const typeFilters = document.querySelectorAll('input[name="office"]:checked');
+
+    const jobFilterValues = Array.from(jobFilters).map(input => input.value);
+    const regionFilterValues = Array.from(regionFilters).map(input => input.value);
+    const statusFilterValues = Array.from(statusFilters).map(input => input.value);
+    const typeFilterValues = Array.from(typeFilters).map(input => input.value);
+
+    posts.forEach(post => {
+        const job = post.dataset.job;
+        const region = post.dataset.region;
+        const status = post.dataset.status;
+        const type = post.dataset.type;
+
+        const jobMatch = jobFilterValues.length === 0 || jobFilterValues.includes(job);
+        const regionMatch = regionFilterValues.length === 0 || regionFilterValues.includes(region);
+        const statusMatch = statusFilterValues.length === 0 || statusFilterValues.includes(status);
+        const typeMatch = typeFilterValues.length === 0 || typeFilterValues.includes(type);
+
+        if (jobMatch && regionMatch && statusMatch && typeMatch) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+}
+
+document.querySelector('.search-button').addEventListener('click', filterPosts);
+
+  </script>
+  <div class="post-color">
+    <div class="post-title"><h2>다른 사람은 면접을 어떻게 봤을까?<br> 생생한 면접 후기를 확인해보세요!</h2></div>
+    <div class="dropdown">
+      <select onchange="sortPosts(this.value)">
+          <option value="most_viewed">조회수</option>
+          <option value="newest">최근 글</option>
+          <option value="oldest">오래된 글</option>
+      </select>
+  </div>
+  <div class="post-container">
+    <div class="post">
+        <h3>커리어 허브</h3>
+        <h4>작성자: 홍길동</h4>
+        <div class="tags">
+            <span class="tag">#개발자</span>
+            <span class="tag">#서울</span>
+            <span class="tag">#경력직</span>
+            <span class="tag">#합격</span>
+        </div>
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+    </div>
+    <!-- 추가 게시글 -->
+    <div class="post">
+        <h3>테크 인더스트리</h3>
+        <h4>작성자: 김철수</h4>
+        <div class="tags">
+            <span class="tag">#디자이너</span>
+            <span class="tag">#부산</span>
+            <span class="tag">#신입</span>
+            <span class="tag">#불합격</span>
+        </div>
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+    </div>
+    <div class="post">
+      <h3>테크 인더스트리</h3>
+      <h4>작성자: 김철수</h4>
+      <div class="tags">
+          <span class="tag">#디자이너</span>
+          <span class="tag">#부산</span>
+          <span class="tag">#신입</span>
+          <span class="tag">#불합격</span>
+      </div>
+      <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+  </div>
+  <div class="post">
+    <h3>테크 인더스트리</h3>
+    <h4>작성자: 김철수</h4>
+    <div class="tags">
+        <span class="tag">#디자이너</span>
+        <span class="tag">#부산</span>
+        <span class="tag">#신입</span>
+        <span class="tag">#불합격</span>
+    </div>
+    <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+<div class="post">
+  <h3>테크 인더스트리</h3>
+  <h4>작성자: 김철수</h4>
+  <div class="tags">
+      <span class="tag">#디자이너</span>
+      <span class="tag">#부산</span>
+      <span class="tag">#신입</span>
+      <span class="tag">#불합격</span>
+  </div>
+  <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+</div>
+    <!-- 이후 게시글은 비슷한 구조로 반복 -->
+</div>
+<div id="pagination">
+    <button onclick="previousPage()">이전</button>
+    <span id="pageNumbers"></span> 
+    <button onclick="nextPage()">다음</button>
+    <button class="post-button" onclick="document.getElementById('reviewModal').style.display='block'">면접 후기 작성하기</button>
+</div>
+</div>
+<script>
+function createLines() {
+    const postColor = document.querySelector('.post-color');
+    const numberOfLines = 10; // 원하는 선의 수 조정 가능
+
+    for (let i = 0; i < numberOfLines; i++) {
+        let line = document.createElement('div');
+        line.classList.add('line');
+        line.style.top = `${i * 20}px`; //선 간격 조절
+        if (i % 2 === 0) {
+            line.style.left = '0';
+            line.style.width = '45%'; // 왼쪽 선 길이 조절
+        } else {
+            line.style.right = '0';
+            line.style.width = '45%'; //오른쪽 선 길이 조절
+        }
+        line.style.animationDelay = `${i * 0.2}s`; // 애니메이션 시작 딜레이
+        postColor.appendChild(line);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', createLines);
+
+
+</script>
+<script>
+var currentPage = 1;
+var postsPerPage = 12;
+var totalPosts = document.getElementsByClassName('post').length;
+var totalPages = Math.ceil(totalPosts / postsPerPage);
+
+function updatePagination() {
+    document.getElementById('pageNumbers').innerHTML = ""; // 페이지 번호를 초기화
+    for (let i = 1; i <= totalPages; i++) {
+        let pageLink = document.createElement('button');
+        pageLink.innerText = i;
+        pageLink.onclick = function() {
+            currentPage = i;
+            showPage();
+        };
+        document.getElementById('pageNumbers').appendChild(pageLink);
+    }
+    showPage();
+}
+
+function showPage() {
+    var posts = Array.from(document.getElementsByClassName('post'));
+    posts.forEach(post => {
+        post.style.display = 'none';
+    });
+    var start = (currentPage - 1) * postsPerPage;
+    var end = start + postsPerPage;
+    posts.slice(start, end).forEach(post => {
+        post.style.display = 'block';
+    });
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        showPage();
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        showPage();
+    }
+}
+
+// 초기 페이지 로딩
+updatePagination();
+
+</script>
+
+<div id="reviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('reviewModal').style.display='none'">&times;</span>
+        <h1>면접 후기 작성</h1>
+        <form id="interviewForm">
+            <h2>기본 정보</h2>
+            <div class="filter-section">
+                <h3 class="filter-title">직무:</h3>
+                <div class="checkbox-group">
+                    <!-- 예시 체크박스, 필요에 따라 추가 -->
+                    <label><input type="checkbox" name="job" value="개발자">개발자</label>
+                    <label><input type="checkbox" name="job" value="디자이너">디자이너</label>
+                    <label><input type="checkbox" name="job" value="총무/법무/사무">법무.총무.사무</label>
+                    <label><input type="checkbox" name="job" value="영업">영업</label>
+                    <label><input type="checkbox" name="job" value="고객상담">고객상담</label>
+                    <label><input type="checkbox" name="job" value="물류">물류</label>
+                    <label><input type="checkbox" name="job" value="기획">기획</label>
+                    <label><input type="checkbox" name="job" value="운송">운송</label>
+                    <br>
+                    <label><input type="checkbox" name="job" value="서비스">서비스</label>
+                    <label><input type="checkbox" name="job" value="생산">생산</label>
+                    <label><input type="checkbox" name="job" value="건설">건설</label>
+                    <label><input type="checkbox" name="job" value="의료">의료</label>
+                    <label><input type="checkbox" name="job" value="연구">연구</label>
+                    <label><input type="checkbox" name="job" value="교육">교육</label>
+                    <label><input type="checkbox" name="job" value="스포츠">스포츠</label>
+                    <label><input type="checkbox" name="job" value="보험">보험</label>
+                    <label><input type="checkbox" name="job" value="복지">복지</label>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3 class="filter-title">지역:</h3>
+                <div class="checkbox-group">
+                    <!-- 예시 체크박스, 필요에 따라 추가 -->
+                    <label><input type="checkbox" name="region" value="서울">서울</label>
+                    <label><input type="checkbox" name="region" value="부산">부산</label>
+                    <label><input type="checkbox" name="region" value="경기">경기</label>
+                    <label><input type="checkbox" name="region" value="인천">인천</label>
+                    <label><input type="checkbox" name="region" value="대전">대전</label>
+                    <label><input type="checkbox" name="region" value="광주">광주</label>
+                    <label><input type="checkbox" name="region" value="강원">광원</label>
+                    <br>
+                    <label><input type="checkbox" name="region" value="새종">세종</label>
+                    <label><input type="checkbox" name="region" value="충북">충북</label>
+                    <label><input type="checkbox" name="region" value="충남">충남</label>
+                    <label><input type="checkbox" name="region" value="경북">경북</label>
+                    <label><input type="checkbox" name="region" value="경남">경남</label>
+                    <label><input type="checkbox" name="region" value="전북">전북</label>
+                    <label><input type="checkbox" name="region" value="전남">전남</label>
+                    <label><input type="checkbox" name="region" value="제주">제주</label>
+                    <!-- 추가 지역 체크박스 -->
+                </div>
+            </div>
+            합격 여부: <select name="passStatus">
+                <option value="합격">합격</option>
+                <option value="불합격">불합격</option>
+                <option value="대기중">대기중</option>
+            </select><br>
+            고용 형태: <select name="employmentType">
+                <option value="신입">신입</option>
+                <option value="경력직">경력직</option>
+            </select><br>
+            기업 이름: <input type="text" name="companyName" required><br>
+    
+            <h2>면접 내용</h2>
+            면접관 및 지원자 수: <input type="text" name="interviewerCount" required><br>
+            면접 형태: <input type="text" name="interviewType" required><br>
+            면접 질문: <textarea name="interviewQuestion" required></textarea><br>
+            면접관 반응: <textarea name="interviewerResponse" required></textarea><br>
+            면접 분위기: <textarea name="interviewAtmosphere" required></textarea><br>
+            면접 후 아쉬웠던 점: <textarea name="interviewRegrets" required></textarea><br>
+            <h2>면접 평가</h2>
+            만족도:<!-- 만족도 별점 부분 -->
+            <div class="star-rating" style="text-align: center;">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"></label>
+            </div>
+            
+            <br>
+            면접관 태도: <select name="interviewerAttitude">
+                <option value="좋음">좋음</option>
+                <option value="보통">보통</option>
+                <option value="나쁨">나쁨</option>
+            </select><br>
+            면접 난이도:<select name="interviewDifficulty">
+                <option value="너무 쉬움" data-color="#2ecc71">너무 쉬움</option>
+                <option value="쉬움" data-color="#f1c40f">쉬움</option>
+                <option value="보통" data-color="#e67e22">보통</option>
+                <option value="어려움" data-color="#e74c3c">어려움</option>
+                <option value="매우 어려움" data-color="#c0392b">매우 어려움</option>
+            </select><br>
+            <button type="button" onclick="submitForm()">게시글 작성</button>
+        </form>
+    </div>
+</div>
+<script>
+document.getElementById('interviewForm').elements['interviewDifficulty'].addEventListener('change', function() {
+    var color = this.options[this.selectedIndex].dataset.color;
+    this.style.backgroundColor = color;
+});
+
+function submitForm() {
+    var form = document.getElementById('interviewForm');
+    var jobs = Array.from(form.querySelectorAll('input[name="job"]:checked')).map(el => el.value);
+    var regions = Array.from(form.querySelectorAll('input[name="region"]:checked')).map(el => el.value);
+    var rating = form.querySelector('input[name="rating"]:checked').value;
+
+    var postHtml = `<div class="post"
+                    data-job="${jobs.join(', ')}"
+                    data-region="${regions.join(', ')}"
+                    data-status="${form.elements['passStatus'].value}"
+                    data-type="${form.elements['employmentType'].value}"
+                    data-interviewer-count="${form.elements['interviewerCount'].value}"
+                    data-interview-type="${form.elements['interviewType'].value}"
+                    data-interview-question="${form.elements['interviewQuestion'].value}"
+                    data-interviewer-response="${form.elements['interviewerResponse'].value}"
+                    data-interview-atmosphere="${form.elements['interviewAtmosphere'].value}"
+                    data-interview-regrets="${form.elements['interviewRegrets'].value}"
+                    data-rating="${rating}"
+                    data-difficulty="${form.elements['interviewDifficulty'].value}"
+                    data-attitude="${form.elements['interviewerAttitude'].value}">
+                    <h3>${form.elements['companyName'].value}</h3>
+                    <h4>사용자</h4>
+                    <div class="tags">
+                        <span class="tag">#${jobs.join('</span><span class="tag">#')}</span>
+                        <span class="tag">#${regions.join('</span><span class="tag">#')}</span>
+                        <span class="tag">#${form.elements['employmentType'].value}</span>
+                        <span class="tag">#${form.elements['passStatus'].value}</span>
+                    </div>
+                    <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+                </div>`;
+    var container = document.querySelector('.post-container');
+    container.innerHTML += postHtml; // Append new post
+    totalPosts++; // Update total posts count
+    totalPages = Math.ceil(totalPosts / postsPerPage);
+    addPostEventListeners(); // 다시 이벤트 리스너 추가
+    updatePagination(); //필터 리셋 및 오류 방지화
+    document.getElementById('reviewModal').style.display = 'none';
+    form.reset(); // 폼 리셋
+    filterPosts(); // 필터 적용 코드
+
+}
+
+document.querySelectorAll('.star-rating > label').forEach(label => {
+    label.addEventListener('click', function() {
+        this.previousElementSibling.checked = true;  // 클릭된 라벨 바로 앞의 라디오 버튼을 체크
+    });
+});
+
+</script>
+
+<script>
+function addPostEventListeners() {
+    // 모든 게시물에 대해 이벤트 리스너 제거 후 다시 추가
+    document.querySelectorAll('.post').forEach(post => {
+        post.removeEventListener('click', handlePostClick); // 기존 이벤트 리스너 제거
+        post.addEventListener('click', handlePostClick); // 새 이벤트 리스너 추가
+    });
+}
+
+function handlePostClick() {
+    var queryParams = new URLSearchParams();
+    queryParams.append('companyName', this.querySelector('h3').textContent);
+    queryParams.append('author', this.querySelector('h4').textContent);
+    queryParams.append('jobs', this.dataset.job);
+    queryParams.append('regions', this.dataset.region);
+    queryParams.append('employmentType', this.dataset.type);
+    queryParams.append('passStatus', this.dataset.status);
+    queryParams.append('interviewDifficulty', this.dataset.difficulty);
+    queryParams.append('interviewerAttitude', this.dataset.attitude);
+    queryParams.append('interviewerCount', this.dataset.interviewerCount);
+    queryParams.append('interviewType', this.dataset.interviewType);
+    queryParams.append('interviewQuestion', this.dataset.interviewQuestion);
+    queryParams.append('interviewerResponse', this.dataset.interviewerResponse);
+    queryParams.append('interviewAtmosphere', this.dataset.interviewAtmosphere);
+    queryParams.append('interviewRegrets', this.dataset.interviewRegrets);
+    queryParams.append('rating', this.dataset.rating);
+
+    window.location.href = `ddd.html?${queryParams.toString()}`;
+    window.location.href = `ddd.html?rating=${rating}&...otherParams`;
+}
+document.querySelectorAll('.post').forEach(post => {
+    post.removeEventListener('click', handlePostClick); // Remove existing event listener to prevent duplicates
+    post.addEventListener('click', handlePostClick); // Re-add event listener
+});
+
+</script>   
+<script>
+  function sortPosts(value) {
+      // 여기에 정렬 로직을 추가하세요.
+      console.log("정렬 기준:", value);
+  }
+</script>
+
+</body>
+</html>

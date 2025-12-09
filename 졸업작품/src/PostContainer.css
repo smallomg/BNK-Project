@@ -1,0 +1,45 @@
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 */
+    z-index: 1000; /* 다른 콘텐츠 위에 표시되도록 */
+    transition: opacity 0.3s ease;
+    opacity: 0; /* 모달의 투명도 설정 */
+}
+
+.modal.show {
+    display: flex; /* 모달을 표시 */
+    opacity: 1; /* 모달의 투명도 설정 */
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    height: 80%;
+    max-width: 600px;
+    position: relative;
+    overflow: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px; /* 닫기 버튼의 크기 설정 */
+    color: #333; /* 닫기 버튼의 색상 설정 */
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* 작은 화면에서 모달의 너비 조정 */
+    }
+}
