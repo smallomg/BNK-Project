@@ -1,1 +1,87 @@
-12
+# 안녕하세요, 경험하며 성장 중인 개발자 이대영입니다.
+
+> **"배운 것을 내 것으로 만들기 위해 끊임없이 노력합니다."**  
+> 부족함은 열정으로 채우고, 모르는 것은 알 때까지 파고드는 끈기를 가지고 있습니다.  
+
+<br>
+
+## Tech Stack
+
+### Backend & Framework
+<img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white">
+
+### Database
+<img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+
+### Frontend & Mobile
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"> <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white">
+
+### Tools
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
+
+<br>
+
+## Projects Timeline
+**(직접 경험하며 배운 프로젝트 기록입니다)**
+
+<br>
+
+### 1. BNK-Project (학원 메인 프로젝트)
+> **소개:** BNK 금융 서비스를 벤치마킹한 웹 뱅킹 서비스  
+> **개발 기간:** 202X.XX ~ 202X.XX (팀 프로젝트)
+
+학원 과정의 마지막 프로젝트로, 팀원들과 협업하여 은행 업무 기능을 구현했습니다. **Spring Framework와 OracleDB를 실제로 어떻게 연결하고 사용하는지** 확실히 배울 수 있었습니다.
+
+- **Tech Stack**: `Java`, `Spring (STS4)`, `OracleDB`, `MyBatis`, `JSP`
+- **My Role**:
+  - **DB 구현**: 회원/계좌 관련 테이블 생성 및 데이터 관리
+  - **기능 구현**: 계좌 이체 로직 작성 및 오류 수정
+  - **화면 구성**: 사용자에게 보여지는 뱅킹 화면(JSP) 제작
+- **GitHub**: [📂 소스코드 보러가기](https://github.com/smallomg/Portfolio/tree/main/BNK-Project)
+
+<br>
+
+### 2. BNK-miniproject (학원 미니 프로젝트)
+> **소개:** Spring과 MyBatis를 활용한 **아쿠아리움 티켓 예약 웹사이트**
+> **개발 기간:** 2025.05.21 ~ 2025.05.27 (1주)
+
+메인 프로젝트를 진행하기 전, **Spring Framework와 MyBatis, OracleDB**의 연동 구조를 익히기 위해 진행한 프로젝트입니다. 실제 아쿠아리움 사이트를 벤치마킹하여 티켓 예매와 고객 센터 기능을 구현했습니다.
+
+- **Tech Stack**: `Java`, `Spring`, `MyBatis`, `OracleDB`, `JSP`
+- **My Role**:
+  - **게시판 구현**: QnA(1:1문의), FAQ, 공지사항 등록/수정/삭제(CRUD) 로직 개발
+  - **검색 기능**: 동적 쿼리를 활용한 게시글 다중 조건 검색(제목, 내용 등) 구현
+- **GitHub**: [📂 소스코드 보러가기](https://github.com/smallomg/Portfolio/tree/main/BNK-miniproject)
+<br>
+
+### 3. Portfolio-site (대학 졸업 작품)
+> **소개:** [주제: 예 - 대학생활 기록 웹사이트 / 여행 정보 앱]  
+> **개발 기간:** 202X.XX ~ 202X.XX
+
+개발 공부를 본격적으로 시작하기 전, 대학 졸업 작품으로 만들었던 결과물입니다. 기획부터 완성까지 하나의 사이클을 경험해 보았습니다.
+
+- **Tech Stack**: [사용 기술: HTML/CSS/JS 또는 Flutter 등]
+- **My Role**:
+  - 전체적인 디자인 및 화면 레이아웃 구성
+  - 아이디어 기획 및 기능 구현
+- **GitHub**: [📂 소스코드 보러가기](https://github.com/smallomg/Portfolio/tree/main/Portfolio-site)
+
+<br>
+
+## Education
+- **[학원 이름]** (202X.XX ~ 202X.XX)
+  - 자바(Java) 기반 백엔드 개발자 양성 과정 수료
+- **[대학교 이름]** (202X.XX ~ 202X.XX)
+  - [전공학과명] 졸업
+
+<br>
+
+## Contact
+- **Email**: [이메일주소]@gmail.com
+- **GitHub**: [https://github.com/smallomg](https://github.com/smallomg)
+
+<br>
+
+---
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=smallomg&show_icons=true&theme=radical)
