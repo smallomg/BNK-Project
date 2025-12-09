@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aquarium.dao.IMemberDao">
+
+	<!-- 로그인 -->
+	<select id="loginSecretPw" resultType="String">
+		select pw from member where id=#{id}
+	</select>
+	
+	<select id="loginId" resultType="_int">
+		select count(*) from member where id=#{id}
+	</select>
+
+	<!-- 회원가입 -->
+	<select id="joinIdCheck" resultType="int">
+		select count(*) from member where id=#{id}
+	</select>
+	
+	<insert id="join">
+		insert into member values (#{member.id}, #{member.pw}, #{member.name}, #{member.phone}, #{member.birth}, #{member.aim})
+	</insert>
+	
+	<select id="getName">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+
+</mapper>

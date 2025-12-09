@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aquarium.dao.IAdminDao">
+  
+  <select id="adminLogin">
+  	SELECT COUNT(*) FROM admins WHERE aid = #{aid} AND apw = #{apw}
+  </select>
+  
+  <select id="getAdmin">
+  	SELECT * FROM admins WHERE aid = #{aid}
+  </select>
+  
+  <select id="getSalesOfday">
+  	SELECT TO_CHAR(odate, 'YYYY-MM-DD') AS sales_date, SUM(totalprice) AS sales
+	FROM orders
+	WHERE odate BETWEEN TO_DATE(#{day}, 'YYYY-MM-DD') - 3 AND TO_DATE(#{day}, 'YYYY-MM-DD') + 3
+	GROUP BY odate
+  </select>
+  
+  <select id="getSalesOfmonth">
+  	SELECT TO_CHAR(odate, 'YYYY-MM') AS sales_month, SUM(totalprice) AS total_sales
+	FROM orders
+	WHERE TO_CHAR(odate, 'YYYY') = #{year}
+	GROUP BY TO_CHAR(odate, 'YYYY-MM')
+	ORDER BY sales_month
+  </select>
+</mapper>

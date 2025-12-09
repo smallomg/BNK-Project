@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aquarium.dao.ITicketDao">
+
+<select id="selectAllTickets" resultType="com.example.aquarium.dto.TicketDTO">
+        SELECT tno, tname, tprice, tcontent FROM ticket ORDER BY tno
+</select>
+<insert id="createTicket">
+    INSERT INTO ticket (tno, tname, tprice, tcontent)
+    VALUES ('T' || LPAD(seq_ticket.NEXTVAL, 3, '0'), #{t.tname}, #{t.tprice}, #{t.tcontent})
+</insert>
+
+</mapper>

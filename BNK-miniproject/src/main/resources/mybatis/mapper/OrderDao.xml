@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aquarium.dao.IOrderDao">
+
+    <!-- 전체 이용권 조회 -->
+    <select id="selectAllTickets" resultType="com.example.aquarium.dto.TicketDTO">
+        SELECT tno, tname, tprice, tcontent FROM ticket ORDER BY tno
+    </select>
+
+    <!-- 이용권 가격 조회 -->
+    <select id="getTicketPrice" parameterType="string" resultType="int">
+        SELECT tprice FROM ticket WHERE tno = #{tno}
+    </select>
+
+    <!-- 주문 저장 -->
+    <insert id="insertOrder" parameterType="com.example.aquarium.dto.OrderDTO" useGeneratedKeys="false">
+        INSERT INTO orders (ono, id, totalprice, ophone, odate)
+        VALUES ('R' || LPAD(seq_order.NEXTVAL, 3, '0'), #{id}, #{totalprice}, #{ophone}, SYSDATE)
+    </insert>
+
+    <!-- 주문번호 마지막값 가져오기 -->
+    <select id="getLastOrderNo" resultType="string">
+        SELECT 'R' || LPAD(seq_order.CURRVAL, 3, '0') FROM dual
+    </select>
+
+    <!-- 주문 아이템 저장 -->
+    <insert id="insertItem" parameterType="com.example.aquarium.dto.ItemDTO">
+        INSERT INTO items (ino, ono, tno, amount)
+        VALUES ('I' || LPAD(seq_items.NEXTVAL, 3, '0'), #{ono}, #{tno}, #{amount})
+    </insert>
+
+    <!-- 회원별 주문내역 조회 -->
+    <select id="selectOrderItemsByMemberId" parameterType="string" resultType="map">
+        SELECT o.ono AS ono, o.odate AS odate, o.totalprice AS totalprice, t.tname AS tname, i.amount AS amount
+        FROM orders o
+        JOIN items i ON o.ono = i.ono
+        JOIN ticket t ON i.tno = t.tno
+        WHERE o.id = #{id}
+        ORDER BY o.odate DESC
+    </select>
+
+</mapper>
