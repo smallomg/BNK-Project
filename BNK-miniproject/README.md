@@ -31,8 +31,6 @@
 <br>
 
 ## ERD & Database Logic (데이터베이스 설계)
-**(실제 구현된 테이블 구조)**
-
 <!-- 이미지를 넣으시려면 아래 경로를 수정하세요 -->
 <img width="791" height="463" alt="image" src="https://github.com/user-attachments/assets/f72eb8da-e004-40d2-b899-289967345a6c" />
 
