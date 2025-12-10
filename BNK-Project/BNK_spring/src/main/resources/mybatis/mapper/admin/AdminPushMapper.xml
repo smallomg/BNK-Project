@@ -1,0 +1,78 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.busanbank.card.admin.dao.AdminPushMapper">
+
+  <!-- PUSH_NO 는 IDENTITY 컬럼이라고 가정 -->
+  <insert id="insertPush"
+          parameterType="com.busanbank.card.admin.dto.AdminPushRow"
+          useGeneratedKeys="true"
+          keyProperty="pushNo"
+          keyColumn="PUSH_NO">
+    INSERT INTO PUSH (TITLE, CONTENT, TARGET_TYPE, CREATED_BY, CREATED_AT)
+    VALUES (#{title}, #{content}, #{targetType}, #{createdBy}, SYSTIMESTAMP)
+  </insert>
+
+  <insert id="insertPushTarget" parameterType="map">
+    INSERT INTO PUSH_TARGET (PUSH_NO, MEMBER_NO)
+    VALUES (#{pushNo}, #{memberNo})
+  </insert>
+
+  <select id="countPreviewAll" resultType="int">
+    SELECT COUNT(*) FROM PUSH_MEMBER WHERE PUSH_YN = 'Y'
+  </select>
+
+  <!-- 파라미터는 @Param("memberNos") 로 받고, foreach 의 collection 도 memberNos 로 통일 -->
+  <select id="countPreviewList" resultType="int">
+    SELECT COUNT(*)
+      FROM PUSH_MEMBER
+     WHERE PUSH_YN = 'Y'
+       AND MEMBER_NO IN
+       <foreach item="id" collection="memberNos" open="(" separator="," close=")">
+         #{id}
+       </foreach>
+  </select>
+
+  <!-- 단일 파라미터도 @Param("pushNo") 를 쓰므로 #{pushNo} 가능 -->
+  <select id="selectRecipientsForPush" resultType="long">
+    SELECT DISTINCT r.member_no
+      FROM (
+        SELECT m.member_no
+          FROM PUSH p
+          JOIN PUSH_MEMBER m ON m.PUSH_YN = 'Y'
+         WHERE p.PUSH_NO = #{pushNo}
+           AND p.TARGET_TYPE = 'ALL'
+        UNION ALL
+        SELECT t.member_no
+          FROM PUSH p
+          JOIN PUSH_TARGET t ON t.PUSH_NO = p.PUSH_NO
+          JOIN PUSH_MEMBER m ON m.MEMBER_NO = t.MEMBER_NO AND m.PUSH_YN = 'Y'
+         WHERE p.PUSH_NO = #{pushNo}
+           AND p.TARGET_TYPE = 'MEMBER_LIST'
+      ) r
+  </select>
+
+  <select id="selectPushList" resultType="map">
+    SELECT
+      p.PUSH_NO      AS pushNo,
+      p.TITLE        AS title,
+      p.CONTENT      AS content,
+      p.TARGET_TYPE  AS targetType,
+      p.CREATED_BY   AS createdBy,
+      p.CREATED_AT   AS createdAt,
+      CASE p.TARGET_TYPE
+        WHEN 'ALL' THEN (SELECT COUNT(*) FROM PUSH_MEMBER m WHERE m.PUSH_YN='Y')
+        ELSE (SELECT COUNT(*)
+                FROM PUSH_TARGET t
+                JOIN PUSH_MEMBER m ON m.MEMBER_NO = t.MEMBER_NO AND m.PUSH_YN = 'Y'
+               WHERE t.PUSH_NO = p.PUSH_NO)
+      END AS recipientCount
+    FROM PUSH p
+    ORDER BY p.PUSH_NO DESC
+    OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+  </select>
+
+  <select id="countPushList" resultType="int">
+    SELECT COUNT(*) FROM PUSH
+  </select>
+</mapper>

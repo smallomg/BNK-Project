@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.busanbank.card.custom.mapper.CustomCardMapper">
+
+  <!-- 시퀀스로 PK 채우기 -->
+  <select id="nextId" resultType="long">
+    SELECT seq_custom_card.NEXTVAL FROM dual
+  </select>
+
+  <!-- 등록 -->
+  <insert id="insert">
+    INSERT INTO CUSTOM_CARD (
+      custom_no, member_no, image_blob, status, reason, custom_service,
+      created_at, ai_result, ai_reason
+    ) VALUES (
+      #{customNo,jdbcType=NUMERIC},
+      #{memberNo,jdbcType=NUMERIC},
+      #{imageBlob,jdbcType=BLOB},
+      #{status,jdbcType=VARCHAR},
+      #{reason,jdbcType=VARCHAR},
+      #{customService,jdbcType=VARCHAR},
+      SYSDATE,
+      #{aiResult,jdbcType=VARCHAR},
+      #{aiReason,jdbcType=VARCHAR}
+    )
+  </insert>
+
+  <!-- ⬇️ 추가: 단건 조회 -->
+  <select id="findById" resultType="com.busanbank.card.custom.dto.CustomCardDto">
+    SELECT
+      custom_no       AS customNo,
+      member_no       AS memberNo,
+      image_blob      AS imageBlob,
+      status          AS status,
+      reason          AS reason,
+      custom_service  AS customService,
+      created_at      AS createdAt,
+      updated_at      AS updatedAt,
+      approved_at     AS approvedAt,
+      ai_result       AS aiResult,
+      ai_reason       AS aiReason
+    FROM CUSTOM_CARD
+    WHERE custom_no = #{customNo}
+  </select>
+  
+  <update id="updateAi">
+  UPDATE CUSTOM_CARD
+     SET AI_RESULT = #{aiResult},
+         AI_REASON = #{aiReason},
+         UPDATED_AT = CURRENT_TIMESTAMP
+   WHERE CUSTOM_NO = #{customNo}
+</update>
+
+</mapper>

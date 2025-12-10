@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.busanbank.card.card.dao.CardDao">
+
+	<resultMap id="CardMap" type="com.busanbank.card.card.dto.CardDto">
+	    <id     column="CARD_NO"        property="cardNo"/>
+	    <result column="CARD_NAME"      property="cardName"/>
+	    <result column="CARD_TYPE"      property="cardType"/>
+	    <result column="CARD_BRAND"     property="cardBrand"/>
+	    <result column="VIEW_COUNT"     property="viewCount"/>
+	    <result column="ANNUAL_FEE"     property="annualFee"/>
+	    <result column="ISSUEDTO"       property="issuedTo"/>
+	    <result column="SERVICE"        property="service"/>
+	    <result column="S_SERVICE"      property="sService"/>
+	    <result column="CARD_STATUS"    property="cardStatus"/>
+	    <result column="CARD_URL"       property="cardUrl"/>
+	    <result column="CARD_ISSUEDATE" property="cardIssueDate"/>
+	    <result column="CARD_DUEDATE"   property="cardDueDate"/>
+	    <result column="CARD_SLOGAN"    property="cardSlogan"/>
+	    <result column="CARD_NOTICE"    property="cardNotice"/>
+	    <result column="REG_DATE"       property="regDate"/>
+	    <result column="EDIT_DATE"      property="editDate"/>
+    </resultMap>
+	<select id="selectAll"
+		resultType="com.busanbank.card.card.dto.CardDto">
+		SELECT CARD_NO AS cardNo,
+		CARD_NAME AS cardName,
+		CARD_URL AS cardUrl,
+		CARD_SLOGAN AS cardSlogan,
+		CARD_TYPE AS cardType,
+		CARD_BRAND AS cardBrand,
+		VIEW_COUNT AS viewCount,
+		ANNUAL_FEE AS annualFee
+		FROM CARD
+		WHERE 
+    CARD_STATUS = '게시중'
+		ORDER BY CARD_NO
+	</select>
+
+	<select id="selectById"
+		resultType="com.busanbank.card.card.dto.CardDto">
+		SELECT * FROM CARD WHERE CARD_NO = #{cardNo}
+	</select>
+
+	<select id="selectCardTypeById"
+		resultType="String">
+		SELECT CARD_TYPE FROM CARD WHERE CARD_NO = #{cardNo}
+	</select>
+
+
+	<!-- 뷰카운트 -->
+	<update id="updateViewCount">
+		UPDATE CARD SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE
+		CARD_NO = #{cardNo}
+	</update>
+	
+	<!-- 카드리스트 검색기능 -->
+<select id="searchByKeyword" resultType="com.busanbank.card.card.dto.CardDto">
+  SELECT
+      CARD_NO      AS cardNo,
+      CARD_NAME    AS cardName,
+      CARD_URL     AS cardUrl,
+      CARD_SLOGAN  AS cardSlogan,
+      CARD_TYPE    AS cardType,
+      CARD_BRAND   AS cardBrand,
+      VIEW_COUNT   AS viewCount,
+      ANNUAL_FEE   AS annualFee,
+      SERVICE      AS service,
+      S_SERVICE    AS sService
+  FROM CARD
+  <where>
+  CARD_STATUS = '게시중'
+  
+  <if test="keyword != null and keyword != ''">
+    AND (
+      LOWER(CARD_NAME) LIKE CONCAT(CONCAT('%', LOWER(#{keyword})), '%')
+      OR LOWER(SERVICE) LIKE CONCAT(CONCAT('%', LOWER(#{keyword})), '%')
+      OR LOWER(S_SERVICE) LIKE CONCAT(CONCAT('%', LOWER(#{keyword})), '%')
+      OR LOWER(CARD_TYPE) LIKE CONCAT(CONCAT('%', LOWER(#{keyword})), '%')
+    )
+</if>
+
+  <if test="type != null and type != ''">
+    AND CARD_TYPE = #{type}
+  </if>
+
+  <if test="tags != null and tags.size() > 0">
+    AND (
+      <foreach collection="tags" item="tg" separator=" OR ">
+        LOWER(SERVICE) LIKE '%' || LOWER(#{tg}) || '%'
+        OR LOWER(S_SERVICE) LIKE '%' || LOWER(#{tg}) || '%'
+      </foreach>
+    )
+  </if>
+</where>
+
+  ORDER BY CARD_NO
+</select>
+
+  <resultMap id="PopularCardMap" type="com.busanbank.card.card.dto.CardDto">
+    <result property="cardNo" column="CARD_NO"/>
+    <result property="cardName" column="CARD_NAME"/>
+    <result property="cardSlogan" column="CARD_SLOGAN"/>
+    <result property="cardUrl" column="CARD_URL"/>
+    <result property="popularImgUrl" column="POPULAR_IMG_URL"/> <!-- ✅ 필수 -->
+    <result property="viewCount" column="VIEW_COUNT"/>
+  </resultMap>
+
+<select id="selectPopularCards" resultMap="PopularCardMap">
+    SELECT
+      CARD_NO,
+      CARD_NAME,
+      CARD_SLOGAN,
+      CARD_URL,
+      POPULAR_IMG_URL,
+      VIEW_COUNT
+    FROM CARD
+    ORDER BY VIEW_COUNT DESC
+    FETCH FIRST 6 ROWS ONLY
+  </select>
+  
+  <select id="selectTop3ByView" resultMap="CardMap">
+    SELECT
+      CARD_NO, CARD_NAME, CARD_TYPE, CARD_BRAND, VIEW_COUNT,
+      ANNUAL_FEE, ISSUEDTO, SERVICE, S_SERVICE, CARD_STATUS,
+      CARD_URL, CARD_ISSUEDATE, CARD_DUEDATE, CARD_SLOGAN,
+      CARD_NOTICE, REG_DATE, EDIT_DATE
+    FROM CARD
+    WHERE CARD_STATUS = '게시중'
+    ORDER BY VIEW_COUNT DESC, EDIT_DATE DESC NULLS LAST
+    FETCH FIRST 3 ROWS ONLY
+  </select>
+
+
+
+	
+</mapper>
+
