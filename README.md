@@ -57,7 +57,7 @@
 - **My Role**:
   - **게시판 기능**: QnA(1:1문의), FAQ, 공지사항 CRUD 및 답글 계층형 구조 구현
   - **검색 시스템**: MyBatis 동적 쿼리(`<if>`, `<choose>`)를 활용한 다중 조건 검색 기능
-  - **협업**: 팀원들과의 코드 통합 
+  - **협업**: 팀원들과의 코드 통합 및 Git 충돌 해결 경험
 - **GitHub**: [📂 소스코드 보러가기](https://github.com/smallomg/Portfolio/tree/main/BNK-miniproject)
 <br>
 
