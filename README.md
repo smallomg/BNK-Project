@@ -23,7 +23,6 @@
 <br>
 
 ## Projects Timeline
-**(직접 경험하며 배운 프로젝트 기록입니다)**
 
 <br>
 
