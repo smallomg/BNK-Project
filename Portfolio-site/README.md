@@ -1,16 +1,16 @@
-# 🎓 Career Evaluation Platform (커리어 평가 플랫폼)
+#  Career Evaluation Platform (커리어 평가 플랫폼)
 
 > **동명대학교 컴퓨터공학과 졸업작품**  
 > **Development of Career Evaluation Platform**
 
-## 📖 프로젝트 소개 (About Project)
+##  프로젝트 소개 (About Project)
 본 프로젝트는 **취업 준비생들의 효율적인 취업 지원과 정보 공유를 돕기 위한 포트폴리오 웹 플랫폼**입니다.
 
 기존 구직 플랫폼(사람인, 잡코리아 등)은 서류 제출에만 집중되어 있어 사용자 간의 소통이나 피드백 기능이 부족했습니다. 본 서비스는 이러한 문제를 해결하기 위해 **이력서/자기소개서 자동 생성** 기능과, 다른 구직자들과 서류를 공유하고 평가받을 수 있는 **피드백 커뮤니티** 기능을 통합하여 개발하였습니다.
 
 ---
 
-## 🛠 기술 스택 (Tech Stack)
+##  기술 스택 (Tech Stack)
 
 | 구분 | 기술 (Technology) |
 | :-- | :-- |
@@ -21,7 +21,7 @@
 
 ---
 
-## 📸 주요 기능 (Key Features)
+##  주요 기능 (Key Features)
 
 ### 1. 이력서 자동 생성 (Resume Auto-generation)
 사용자가 프로필 정보를 입력하면, 직군에 적합한 레이아웃으로 이력서를 자동 변환하여 생성합니다.
@@ -65,7 +65,7 @@
 
 ---
 
-## 🏗 시스템 설계 (System Design)
+##  시스템 설계 (System Design)
 
 ### 시스템 아키텍처 (System Architecture)
 <img src="https://github.com/user-attachments/assets/d93bc15f-f9fb-4033-a292-e514d2331a40" width="100%" />
@@ -75,7 +75,7 @@
 
 ---
 
-## 👨‍💻 팀원 소개 (Team Members)
+##  팀원 소개 (Team Members)
 
 | 이름 | 담당 역할 | 이메일 |
 | :--: | :-- | :-- |
