@@ -59,7 +59,7 @@ MVC 패턴과 Spring Framework의 동작 원리를 익히기 위한 프로젝트
 개발 공부를 본격적으로 시작하기 전, **서비스의 전체 생명주기(Life-cycle)**를 경험하기 위해 진행한 졸업 작품입니다.  
 UI/UX 기획부터 프론트엔드 구현까지 주도적으로 수행했습니다.
 
-- **Tech Stack**: `Flutter`, `Dart`, `Firebase`
+- **Tech Stack**: `React`, `Node.js`, `MySql`
 - **Key Features**: 반응형 UI/UX, 포트폴리오 전시
 
 **[상세 구현 내용 & 소스코드 보러가기](https://github.com/smallomg/Portfolio/tree/main/Portfolio-site)**
